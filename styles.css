@@ -44,7 +44,11 @@
 
 /* ---- Reset ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden; /* corta cualquier overflow horizontal global */
+}
 body {
   font-family: var(--font);
   background: var(--bg);
@@ -300,10 +304,14 @@ ul { list-style: none; }
   background: var(--bg);
 }
 
-/* background image layer */
+/* background image layer — solo extiende verticalmente para el parallax;
+   NUNCA horizontalmente para evitar overflow en mobile */
 .hero__bg {
   position: absolute;
-  inset: -40px;
+  top: -50px;
+  bottom: -50px;
+  left: 0;
+  right: 0;
   z-index: 0;
   will-change: transform;
 }
@@ -1359,6 +1367,28 @@ ul { list-style: none; }
 
   /* Ocultar <br> del hero title en mobile para que fluya naturalmente */
   .hero__title br { display: none; }
+
+  /* ---- Contact cards: centrar contenido en mobile ---- */
+  .contact__card {
+    align-items: center;
+    text-align: center;
+  }
+  /* avatar centrado */
+  .contact__avatar { margin-inline: auto; }
+  /* acciones full-width centradas */
+  .contact__actions { width: 100%; }
+  .contact__btn { justify-content: center; }
+
+  /* ---- WA button: moverlo un poco más arriba en mobile
+         para no tapar botones de contacto ---- */
+  .wa-btn {
+    bottom: 20px;
+    right: 18px;
+    width: 52px;
+    height: 52px;
+  }
+  /* Extra padding en la sección de contacto para dejar espacio al WA btn */
+  .contact { padding-bottom: 88px; }
 }
 
 @media (max-width: 480px) {
@@ -1377,8 +1407,13 @@ ul { list-style: none; }
   .services { padding: 64px 0; }
   .trace { padding: 64px 0; }
   .training { padding: 64px 0; }
-  .contact { padding: 64px 0; }
+  .contact { padding: 64px 0 100px; } /* clearance WA btn */
   .section-header { margin-bottom: 36px; }
+
+  /* Cards padding reducido en pantallas muy chicas */
+  .contact__card { padding: 24px 20px; }
+  .contact__form-wrap { padding: 24px 20px; }
+  .bento__card-content { padding: 20px 20px 22px; }
 }
 
 /* ============================================================
