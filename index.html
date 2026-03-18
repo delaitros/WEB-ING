@@ -15,18 +15,22 @@
   <!-- ===== STICKY HEADER ===== -->
   <header class="header" id="header">
     <div class="container header__inner">
+
       <a href="#inicio" class="logo">
-        <span class="logo__mark">GV</span>
-        <span class="logo__text">Ingenieros</span>
+        <span class="logo__gv">GV</span>
+        <span class="logo__sep"></span>
+        <span class="logo__ingenieros">INGENIEROS</span>
       </a>
+
       <nav class="nav" id="nav">
-        <a href="#izaje" class="nav__link">Izaje</a>
-        <a href="#higiene" class="nav__link">Higiene Laboral</a>
-        <a href="#presion" class="nav__link">Presión</a>
+        <a href="#izaje"    class="nav__link">Izaje</a>
+        <a href="#higiene"  class="nav__link">Higiene Laboral</a>
+        <a href="#presion"  class="nav__link">Presión</a>
         <a href="#normativas" class="nav__link">Normativas</a>
         <a href="#contacto" class="btn btn--primary nav__cta">Solicitar Inspección</a>
       </nav>
-      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú">
+
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -34,43 +38,66 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="inicio">
-    <div class="hero__parallax" id="heroParallax"></div>
+    <div class="hero__bg" id="heroParallax">
+      <img
+        src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1920&q=75"
+        alt="Industrial facility"
+        class="hero__bg-img"
+        loading="eager"
+      />
+    </div>
     <div class="hero__overlay"></div>
+    <div class="hero__grid"></div>
+
     <div class="container hero__content">
-      <div class="hero__badge stagger-item">
-        <span class="badge">Ingeniería de Integridad Industrial</span>
+      <div class="hero__eyebrow reveal">
+        <span class="eyebrow-dot"></span>
+        <span>Ingeniería de Integridad Industrial · Patagonia, Argentina</span>
       </div>
-      <h1 class="hero__title stagger-item">
+
+      <h1 class="hero__title reveal">
         Certificación e Inspección<br />
         <span class="gradient-text">bajo Estándares Globales</span>
       </h1>
-      <p class="hero__subtitle stagger-item">
+
+      <p class="hero__subtitle reveal">
         Certificamos y garantizamos el cumplimiento normativo nacional e internacional
-        para la reducción real del riesgo operativo en su empresa.<br />
-        <span class="hero__norm">Ley 19.587 · ASME · ISO · IRAM</span>
+        para la reducción real del riesgo operativo en su empresa.
       </p>
-      <div class="hero__actions stagger-item">
-        <a href="#contacto" class="btn btn--primary btn--lg">Solicitar Inspección</a>
-        <a href="#servicios" class="btn btn--ghost btn--lg">Ver Servicios</a>
+      <p class="hero__norms reveal">
+        <span>Ley 19.587</span>
+        <span>ASME B30 / VIII / Sec. V</span>
+        <span>ISO 4309</span>
+        <span>IRAM</span>
+      </p>
+
+      <div class="hero__actions reveal">
+        <a href="#contacto" class="btn btn--primary btn--lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a2 2 0 011.72-2.18h3"/><path d="M14.05 2a9 9 0 018 7.94M14.05 6A5 5 0 0118 10"/></svg>
+          Solicitar Inspección
+        </a>
+        <a href="#servicios" class="btn btn--ghost btn--lg">Ver Servicios →</a>
       </div>
-      <div class="hero__stats stagger-item">
+
+      <div class="hero__stats reveal">
         <div class="stat">
-          <span class="stat__number">+15</span>
+          <span class="stat__number" data-target="15">0</span><span class="stat__plus">+</span>
           <span class="stat__label">Años de experiencia</span>
         </div>
         <div class="stat__divider"></div>
         <div class="stat">
-          <span class="stat__number">ASME</span>
-          <span class="stat__label">B30 · VIII · Secc. V</span>
+          <span class="stat__number" data-target="3">0</span>
+          <span class="stat__label">Unidades técnicas especializadas</span>
         </div>
         <div class="stat__divider"></div>
         <div class="stat">
-          <span class="stat__number">100%</span>
+          <span class="stat__number" data-target="100">0</span><span class="stat__plus">%</span>
           <span class="stat__label">Trazabilidad documental</span>
         </div>
       </div>
     </div>
-    <div class="hero__scroll">
+
+    <div class="hero__scroll-cue">
       <span>Scroll</span>
       <div class="hero__scroll-line"></div>
     </div>
@@ -83,256 +110,591 @@
       <div class="norm-strip__logos">
         <div class="norm-badge">
           <span class="norm-badge__code">ASME</span>
-          <span class="norm-badge__desc">B30 / VIII / Sec. V</span>
+          <span class="norm-badge__sub">B30 / VIII / Sec. V</span>
         </div>
         <div class="norm-badge">
           <span class="norm-badge__code">ISO</span>
-          <span class="norm-badge__desc">4309 / 9001</span>
+          <span class="norm-badge__sub">4309 / 9001</span>
         </div>
         <div class="norm-badge">
           <span class="norm-badge__code">IRAM</span>
-          <span class="norm-badge__desc">Normativa Nacional</span>
+          <span class="norm-badge__sub">Normativa Nacional</span>
         </div>
         <div class="norm-badge">
-          <span class="norm-badge__code">LEY</span>
-          <span class="norm-badge__desc">19.587 Higiene y Seg.</span>
+          <span class="norm-badge__code">Ley</span>
+          <span class="norm-badge__sub">19.587 H&amp;S</span>
         </div>
         <div class="norm-badge">
           <span class="norm-badge__code">ART</span>
-          <span class="norm-badge__desc">Informes compatibles</span>
+          <span class="norm-badge__sub">Informes compatibles</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== TRES PILARES – BENTO GRID ===== -->
+  <!-- ===== SERVICES OVERVIEW – BENTO ===== -->
   <section class="services" id="servicios">
     <div class="container">
       <div class="section-header">
         <p class="section-label">Nuestros Servicios</p>
-        <h2 class="section-title">Tres Pilares de <span class="gradient-text">Seguridad Industrial</span></h2>
-        <p class="section-subtitle">Soluciones integrales de certificación, medición e inspección técnica para industrias que no pueden permitirse fallos.</p>
+        <h2 class="section-title reveal">Tres Pilares de <span class="gradient-text">Seguridad Industrial</span></h2>
+        <p class="section-subtitle reveal">Soluciones integrales de certificación, medición e inspección técnica para industrias que no pueden permitirse fallos.</p>
       </div>
 
-      <div class="bento" id="servicios-grid">
+      <div class="bento">
 
-        <!-- Izaje -->
-        <article class="bento__card bento__card--wide stagger-item" id="izaje">
-          <div class="bento__icon-wrap">
-            <svg class="bento__icon" viewBox="0 0 64 64" fill="none">
-              <rect x="2" y="50" width="60" height="4" rx="2" fill="currentColor" opacity=".3"/>
-              <rect x="28" y="8" width="4" height="42" rx="2" fill="currentColor"/>
-              <rect x="8" y="8" width="44" height="4" rx="2" fill="currentColor"/>
-              <circle cx="12" cy="10" r="4" fill="currentColor" opacity=".6"/>
-              <circle cx="52" cy="10" r="4" fill="currentColor" opacity=".6"/>
-              <path d="M20 36 L30 26 L40 36" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <line x1="30" y1="26" x2="30" y2="50" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
+        <!-- IZAJE -->
+        <article class="bento__card bento__card--izaje reveal" id="izaje-card">
+          <div class="bento__card-img">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=75" alt="Sistemas de Izaje" loading="lazy" />
           </div>
-          <div class="bento__content">
-            <span class="bento__tag">Unidad de Izaje</span>
-            <h3 class="bento__title">Sistemas de Izaje</h3>
-            <p class="bento__desc">Inspección técnica de puentes grúa, pórticos y accesorios bajo norma <strong>ASME B30</strong> e <strong>ISO 4309</strong>. Certificación de eslingas de acero y sintéticas con registro fotográfico completo.</p>
-            <ul class="bento__list">
-              <li>Inspección de puentes grúa y pórticos</li>
-              <li>Certificación de eslingas y grilletes</li>
-              <li>Capacitación de operadores y eslingadores</li>
-              <li>Evaluación de vida útil remanente</li>
+          <div class="bento__card-content">
+            <span class="pill pill--blue">Izaje</span>
+            <h3>Sistemas de Izaje</h3>
+            <p>Inspección de puentes grúa, pórticos y accesorios bajo <strong>ASME B30</strong> e <strong>ISO 4309</strong>. Certificación de eslingas de acero y sintéticas.</p>
+            <ul class="feat-list">
+              <li>Puentes Grúa y Pórticos</li>
+              <li>Eslingas de Acero e Sintéticas</li>
+              <li>Capacitación Operativa</li>
+              <li>Registro Fotográfico</li>
             </ul>
-            <a href="#contacto" class="bento__link">Solicitar inspección →</a>
-          </div>
-          <div class="bento__bg-accent"></div>
-        </article>
-
-        <!-- Higiene Laboral -->
-        <article class="bento__card stagger-item" id="higiene">
-          <div class="bento__icon-wrap">
-            <svg class="bento__icon" viewBox="0 0 64 64" fill="none">
-              <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="3" opacity=".4"/>
-              <circle cx="32" cy="32" r="12" stroke="currentColor" stroke-width="3"/>
-              <path d="M32 10 L32 20 M32 44 L32 54 M10 32 L20 32 M44 32 L54 32" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-              <circle cx="32" cy="32" r="3" fill="currentColor"/>
-            </svg>
-          </div>
-          <div class="bento__content">
-            <span class="bento__tag">Laboratorio</span>
-            <h3 class="bento__title">Higiene Laboral</h3>
-            <p class="bento__desc">Laboratorio especializado en medición de agentes físicos, químicos y ergonómicos en el ambiente de trabajo.</p>
-            <ul class="bento__list">
-              <li>Nivel sonoro y ruido industrial</li>
-              <li>Carga térmica y ventilación</li>
-              <li>Contaminantes químicos en el aire</li>
-              <li>Vibraciones y ergonomía</li>
-            </ul>
-            <a href="#contacto" class="bento__link">Consultar →</a>
+            <a href="#izaje" class="card-link">Ver detalle completo →</a>
           </div>
         </article>
 
-        <!-- Aparatos a Presión -->
-        <article class="bento__card stagger-item" id="presion">
-          <div class="bento__icon-wrap">
-            <svg class="bento__icon" viewBox="0 0 64 64" fill="none">
-              <ellipse cx="32" cy="48" rx="18" ry="8" stroke="currentColor" stroke-width="3" opacity=".4"/>
-              <rect x="14" y="16" width="36" height="32" rx="4" stroke="currentColor" stroke-width="3"/>
-              <ellipse cx="32" cy="16" rx="18" ry="6" stroke="currentColor" stroke-width="3"/>
-              <path d="M32 8 L32 14 M26 10 L28 16 M38 10 L36 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              <circle cx="32" cy="30" r="5" stroke="currentColor" stroke-width="2.5"/>
-              <path d="M32 25 L32 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            </svg>
+        <!-- HIGIENE -->
+        <article class="bento__card bento__card--higiene reveal" id="higiene-card">
+          <div class="bento__card-img">
+            <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=75" alt="Higiene Laboral" loading="lazy" />
           </div>
-          <div class="bento__content">
-            <span class="bento__tag">Integridad Mecánica</span>
-            <h3 class="bento__title">Aparatos a Presión</h3>
-            <p class="bento__desc">Habilitación técnica de calderas y recipientes sin fuego bajo estándar <strong>ASME Sección VIII</strong>, con cálculo de vida útil remanente.</p>
-            <ul class="bento__list">
-              <li>Habilitación de calderas</li>
-              <li>Calibración de válvulas de seguridad</li>
+          <div class="bento__card-content">
+            <span class="pill pill--teal">Higiene Laboral</span>
+            <h3>Laboratorio de Mediciones</h3>
+            <p>Medición de agentes físicos, químicos y ergonómicos. Muestreo de contaminantes, gases y estudios termográficos.</p>
+            <ul class="feat-list">
+              <li>Nivel Sonoro y Carga Térmica</li>
+              <li>Contaminantes en el Aire</li>
+              <li>Vibraciones y Ergonomía</li>
+              <li>Atmósferas Explosivas</li>
+            </ul>
+            <a href="#higiene" class="card-link">Ver detalle completo →</a>
+          </div>
+        </article>
+
+        <!-- PRESIÓN -->
+        <article class="bento__card bento__card--presion reveal" id="presion-card">
+          <div class="bento__card-img">
+            <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?auto=format&fit=crop&w=900&q=75" alt="Aparatos a Presión" loading="lazy" />
+          </div>
+          <div class="bento__card-content">
+            <span class="pill pill--orange">Presión</span>
+            <h3>Aparatos a Presión</h3>
+            <p>Habilitación técnica de calderas y recipientes sin fuego. END, cálculo de vida útil remanente y auditorías bajo <strong>ASME Sección VIII</strong>.</p>
+            <ul class="feat-list">
+              <li>Habilitación de Calderas</li>
               <li>Ensayos No Destructivos (END)</li>
-              <li>Cálculo VUR – ASME</li>
+              <li>Vida Útil Remanente</li>
+              <li>Auditorías para ART</li>
             </ul>
-            <a href="#contacto" class="bento__link">Consultar →</a>
+            <a href="#presion" class="card-link">Ver detalle completo →</a>
           </div>
         </article>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ===== DETALLE: IZAJE ===== -->
+  <section class="svc-section svc-section--blue" id="izaje">
+    <div class="svc-section__banner">
+      <div class="svc-section__banner-bg">
+        <img src="https://images.unsplash.com/photo-1508144753681-9986d4df99b3?auto=format&fit=crop&w=1600&q=70" alt="Sistemas de Izaje" loading="lazy" />
+      </div>
+      <div class="svc-section__banner-overlay"></div>
+      <div class="container svc-section__banner-content">
+        <p class="svc-eyebrow">Inspección y Certificación de</p>
+        <h2 class="svc-title">Sistemas de Izaje</h2>
+        <p class="svc-subtitle">Ley 19.587 · ASME B30 · ISO 4309 · Normas IRAM</p>
+      </div>
+    </div>
+
+    <div class="container svc-section__body">
+
+      <!-- Cumplimiento Normativo -->
+      <div class="svc-group reveal">
+        <div class="svc-group__header">
+          <div class="svc-group__icon svc-group__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Cumplimiento Normativo</h3>
+        </div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <div>
+              <strong>Ley 19.587</strong>
+              <p>Higiene y Seguridad en el Trabajo.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            <div>
+              <strong>ASME B30 / ISO 4309</strong>
+              <p>Estándares internacionales vigentes.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <div>
+              <strong>Decretos Reglamentarios</strong>
+              <p>Cumplimiento normativo nacional.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            <div>
+              <strong>Normas IRAM</strong>
+              <p>Aplicables a accesorios de izaje.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Elementos y Equipos -->
+      <div class="svc-group reveal">
+        <div class="svc-group__header">
+          <div class="svc-group__icon svc-group__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Elementos y Equipos</h3>
+        </div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+            <div>
+              <strong>Eslingas de Acero</strong>
+              <p>Cables de acero bajo ISO 4309.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+            <div>
+              <strong>Eslingas Sintéticas</strong>
+              <p>Planas, circulares y grado 10.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            <div>
+              <strong>Puentes Grúa y Pórticos</strong>
+              <p>Polipastos y estructuras de elevación.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <div>
+              <strong>Sistemas Especiales</strong>
+              <p>Accesorios de alta presión.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capacitación y Seguridad -->
+      <div class="svc-group reveal">
+        <div class="svc-group__header">
+          <div class="svc-group__icon svc-group__icon--blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <h3>Capacitación y Seguridad</h3>
+        </div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            <div>
+              <strong>Capacitación Operativa</strong>
+              <p>Operadores, eslingadores y HyS.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            <div>
+              <strong>Certificaciones</strong>
+              <p>Habilitaciones para auditorías y ART.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <div>
+              <strong>Registro Fotográfico</strong>
+              <p>Trazabilidad en informes técnicos.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <div>
+              <strong>Gestión de Riesgos</strong>
+              <p>Reducción de riesgo operativo real.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== DETALLE: HIGIENE LABORAL ===== -->
+  <section class="svc-section svc-section--teal" id="higiene">
+    <div class="svc-section__banner">
+      <div class="svc-section__banner-bg">
+        <img src="https://images.unsplash.com/photo-1581093057305-55fd9bdb1b6c?auto=format&fit=crop&w=1600&q=70" alt="Laboratorio de Higiene Laboral" loading="lazy" />
+      </div>
+      <div class="svc-section__banner-overlay"></div>
+      <div class="container svc-section__banner-content">
+        <p class="svc-eyebrow">Laboratorio de Mediciones de</p>
+        <h2 class="svc-title">Higiene Laboral</h2>
+        <p class="svc-subtitle">Agentes Físicos · Agentes Químicos · Seguridad y Ergonomía</p>
+      </div>
+    </div>
+
+    <div class="container svc-section__body">
+
+      <!-- Agentes Físicos -->
+      <div class="svc-group reveal">
+        <div class="svc-group__header">
+          <div class="svc-group__icon svc-group__icon--teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <h3>Agentes Físicos</h3>
+        </div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3v5zM3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3v5z"/></svg>
+            <div>
+              <strong>Medición de Nivel Sonoro</strong>
+              <p>Continuo equivalente y dosis de ruido.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>
+            <div>
+              <strong>Evaluación de Carga Térmica</strong>
+              <p>Control de estrés por calor y frío.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+            <div>
+              <strong>Radiaciones Ultravioleta</strong>
+              <p>Medición de exposición no ionizante.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <div>
+              <strong>Estudios de Iluminación</strong>
+              <p>Relevamiento en puestos de trabajo.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <div>
+              <strong>Análisis de Vibraciones</strong>
+              <p>De cuerpo entero y mano-brazo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Agentes Químicos y Emisiones -->
+      <div class="svc-group reveal">
+        <div class="svc-group__header">
+          <div class="svc-group__icon svc-group__icon--teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 2v7.527a2 2 0 01-.211.896L4.72 18.84a2 2 0 001.8 2.86h10.96a2 2 0 001.8-2.86l-5.069-8.417A2 2 0 0114 9.527V2"/><line x1="8.5" y1="2" x2="15.5" y2="2"/></svg>
+          </div>
+          <h3>Agentes Químicos y Emisiones</h3>
+        </div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22a7 7 0 007-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 007 7z"/></svg>
+            <div>
+              <strong>Contaminantes en el Aire</strong>
+              <p>Muestreo y análisis de polvos y gases.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <div>
+              <strong>Gases de Autoelevadores</strong>
+              <p>Control de emisiones de combustión.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V3M8 17v-5"/></svg>
+            <div>
+              <strong>Emisiones de Chimenea</strong>
+              <p>Muestreo de gases en fuentes fijas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seguridad y Ergonomía -->
+      <div class="svc-group reveal">
+        <div class="svc-group__header">
+          <div class="svc-group__icon svc-group__icon--teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <h3>Seguridad y Ergonomía</h3>
+        </div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            <div>
+              <strong>Atmósferas Explosivas</strong>
+              <p>Control LEL y áreas clasificadas.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            <div>
+              <strong>Evaluaciones Ergonómicas</strong>
+              <p>Estudios con medición de fuerzas.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <div>
+              <strong>Espacios Confinados</strong>
+              <p>Medición de gases para acceso.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22V12M12 12L8 8M12 12L16 8M4 18l8-8 8 8"/></svg>
+            <div>
+              <strong>Estudios Termográficos</strong>
+              <p>Inspección de tableros y equipos.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div>
+              <strong>Puesta a Tierra</strong>
+              <p>Medición de resistencia y continuidad.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== DETALLE: APARATOS A PRESIÓN ===== -->
+  <section class="svc-section svc-section--orange" id="presion">
+    <div class="svc-section__banner">
+      <div class="svc-section__banner-bg">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=70" alt="Aparatos a Presión" loading="lazy" />
+      </div>
+      <div class="svc-section__banner-overlay"></div>
+      <div class="container svc-section__banner-content">
+        <p class="svc-eyebrow">Inspección y Certificación de</p>
+        <h2 class="svc-title">Aparatos Sometidos a Presión</h2>
+        <p class="svc-subtitle">ASME Sección VIII · Ingeniería de Integridad · Ensayos No Destructivos</p>
+      </div>
+    </div>
+
+    <div class="container svc-section__body">
+
+      <!-- Asme compliance banner -->
+      <div class="asme-note reveal">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        <p><strong>Cumplimiento Normativo ASME:</strong> Todos nuestros servicios de integridad mecánica y cálculos de ingeniería se encuentran encuadrados bajo los estrictos estándares de validación de la normativa internacional ASME.</p>
+      </div>
+
+      <!-- Calderas -->
+      <div class="svc-group reveal">
+        <div class="svc-group__header">
+          <div class="svc-group__icon svc-group__icon--orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 006 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6M10 22h4"/></svg>
+          </div>
+          <h3>Calderas</h3>
+        </div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <div>
+              <strong>Habilitación Técnica</strong>
+              <p>Gestión integral de puesta en marcha.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <div>
+              <strong>Pruebas Hidráulicas</strong>
+              <p>Ejecución de ensayos reglamentarios.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div>
+              <strong>Dispositivos de Seguridad</strong>
+              <p>Verificación de funcionamiento.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aparatos sin Fuego -->
+      <div class="svc-group reveal">
+        <div class="svc-group__header">
+          <div class="svc-group__icon svc-group__icon--orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3>Aparatos sin Fuego</h3>
+        </div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <div>
+              <strong>Inspección de Equipos</strong>
+              <p>Aire, amoníaco y gases refrigerantes.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <div>
+              <strong>Calibración de Válvulas</strong>
+              <p>Sistemas de seguridad y alivio.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            <div>
+              <strong>Pruebas de Validación</strong>
+              <p>Ensayos hidráulicos sin fuego.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ingeniería de Integridad -->
+      <div class="svc-group reveal">
+        <div class="svc-group__header">
+          <div class="svc-group__icon svc-group__icon--orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+          <h3>Ingeniería de Integridad</h3>
+        </div>
+        <div class="svc-items">
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 21H3M21 3v18M3 21V3h18M12 3v4M17 3v8M7 3v14"/></svg>
+            <div>
+              <strong>Verificación de Espesores</strong>
+              <p>Medición mediante END.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            <div>
+              <strong>Vida Útil Remanente</strong>
+              <p>Estudios de integridad mecánica.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22c-4.97 0-9-2.686-9-6V8l9-4 9 4v8c0 3.314-4.03 6-9 6z"/></svg>
+            <div>
+              <strong>Presión Máxima Admisible</strong>
+              <p>Recálculo de presión de trabajo.</p>
+            </div>
+          </div>
+          <div class="svc-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <div>
+              <strong>Auditorías de Cumplimiento</strong>
+              <p>Para aseguradoras y ART.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- ===== TRAZABILIDAD ===== -->
   <section class="trace">
     <div class="container trace__inner">
-      <div class="trace__text stagger-item">
+      <div class="trace__text">
         <p class="section-label">Documentación Técnica</p>
-        <h2 class="section-title">Trazabilidad Total para<br /><span class="gradient-text">Auditorías y ART</span></h2>
-        <p class="trace__desc">Cada inspección genera un informe técnico completo, diseñado para satisfacer las exigencias de aseguradoras, auditorías de ART y entes reguladores.</p>
-        <div class="trace__features">
-          <div class="trace__feat">
+        <h2 class="section-title reveal">Trazabilidad Total para<br /><span class="gradient-text">Auditorías y ART</span></h2>
+        <p class="trace__lead reveal">Cada inspección genera un informe técnico completo, diseñado para satisfacer las exigencias de aseguradoras, auditorías de ART y entes reguladores.</p>
+
+        <div class="trace__feats">
+          <div class="trace__feat reveal">
             <div class="trace__feat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                <path d="M8 12l3 3 5-5"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
             </div>
             <div>
               <strong>Registro Fotográfico</strong>
-              <p>Documentación visual completa de cada equipo inspeccionado con geo-referencia y timestamp.</p>
+              <p>Documentación visual completa con geo-referencia y timestamp de cada equipo inspeccionado.</p>
             </div>
           </div>
-          <div class="trace__feat">
+          <div class="trace__feat reveal">
             <div class="trace__feat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <div>
               <strong>Gestión de Riesgos</strong>
               <p>Identificación y categorización de riesgos con planes de acción correctiva prioritarios.</p>
             </div>
           </div>
-          <div class="trace__feat">
+          <div class="trace__feat reveal">
             <div class="trace__feat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
             </div>
             <div>
               <strong>Informes para ART</strong>
-              <p>Nuestros documentos técnicos cumplen con las exigencias de aseguradoras y auditorías de ART.</p>
+              <p>Documentos diseñados para cumplir las exigencias de aseguradoras y auditorías.</p>
             </div>
           </div>
-          <div class="trace__feat">
+          <div class="trace__feat reveal">
             <div class="trace__feat-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"/>
-                <path d="M12 6v6l4 2"/>
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
             </div>
             <div>
-              <strong>Seguimiento de Vencimientos</strong>
-              <p>Control de plazos reglamentarios y alertas preventivas de re-inspección.</p>
+              <strong>Control de Vencimientos</strong>
+              <p>Seguimiento de plazos reglamentarios y alertas de re-inspección.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="trace__visual stagger-item">
-        <div class="trace__card">
-          <div class="trace__card-header">
-            <span class="trace__card-title">Informe Técnico</span>
-            <span class="trace__card-id">GVI-2025-0847</span>
-          </div>
-          <div class="trace__card-body">
-            <div class="trace__row">
-              <span>Equipo</span>
-              <span class="trace__val">Puente Grúa 5T</span>
-            </div>
-            <div class="trace__row">
-              <span>Norma</span>
-              <span class="trace__val">ASME B30.2</span>
-            </div>
-            <div class="trace__row">
-              <span>Estado</span>
-              <span class="trace__val trace__val--ok">✓ Certificado</span>
-            </div>
-            <div class="trace__row">
-              <span>Fotografías</span>
-              <span class="trace__val">34 adjuntas</span>
-            </div>
-            <div class="trace__row">
-              <span>Próxima Insp.</span>
-              <span class="trace__val">Dic 2025</span>
-            </div>
-            <div class="trace__row">
-              <span>ART</span>
-              <span class="trace__val trace__val--ok">✓ Compatible</span>
-            </div>
-          </div>
-          <div class="trace__card-footer">
-            <div class="trace__progress">
-              <div class="trace__progress-bar" style="--pct: 85%"></div>
-            </div>
-            <span class="trace__progress-label">Vida útil remanente: 85%</span>
-          </div>
-        </div>
-        <div class="trace__grid-dots"></div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ===== CAPACITACIÓN ===== -->
-  <section class="training">
-    <div class="container training__inner">
-      <div class="training__badge stagger-item">
-        <span class="badge">Valor Agregado</span>
-      </div>
-      <h2 class="training__title stagger-item">Capacitación para <span class="gradient-text">Operadores y Eslingadores</span></h2>
-      <p class="training__desc stagger-item">Formación técnica especializada para el personal que opera equipos de izaje. Cumplimiento de la Res. SRT 960/15 y requerimientos de la Ley 19.587.</p>
-      <div class="training__cards stagger-item">
-        <div class="training__card">
-          <svg class="training__card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-            <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
-          </svg>
-          <h4>Operadores de Grúa</h4>
-          <p>Teoría y práctica en maniobras seguras, señalética y límites de carga.</p>
+      <!-- Visual report mockup -->
+      <div class="trace__visual reveal">
+        <div class="report-card">
+          <div class="report-card__header">
+            <div class="report-card__dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="report-card__title">Informe Técnico</span>
+            <span class="report-card__id">GVI-2025-0847</span>
+          </div>
+          <div class="report-card__body">
+            <div class="report-row"><span>Equipo</span><span class="mono">Puente Grúa 5T</span></div>
+            <div class="report-row"><span>Norma</span><span class="mono">ASME B30.2</span></div>
+            <div class="report-row"><span>Estado</span><span class="mono ok">✓ Certificado</span></div>
+            <div class="report-row"><span>Fotografías</span><span class="mono">34 adjuntas</span></div>
+            <div class="report-row"><span>Próxima Insp.</span><span class="mono">Dic 2025</span></div>
+            <div class="report-row"><span>ART</span><span class="mono ok">✓ Compatible</span></div>
+          </div>
+          <div class="report-card__footer">
+            <span>Vida útil remanente</span>
+            <div class="report-progress">
+              <div class="report-progress__bar" data-width="85"></div>
+            </div>
+            <span class="mono">85%</span>
+          </div>
         </div>
-        <div class="training__card">
-          <svg class="training__card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M12 22V12M12 12L8 8M12 12L16 8"/>
-            <path d="M20 16.58A5 5 0 0018 7h-1.26A8 8 0 104 15.25"/>
-          </svg>
-          <h4>Eslingadores</h4>
-          <p>Selección, inspección y uso correcto de eslingas y aparejos de izaje.</p>
-        </div>
-        <div class="training__card">
-          <svg class="training__card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
-            <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
-          </svg>
-          <h4>Legislación Vigente</h4>
-          <p>Marco normativo: Ley 19.587, decretos reglamentarios y resoluciones SRT.</p>
-        </div>
+        <div class="trace__visual-glow"></div>
       </div>
     </div>
   </section>
@@ -341,16 +703,47 @@
   <section class="art-banner">
     <div class="container art-banner__inner">
       <div class="art-banner__icon">
-        <svg viewBox="0 0 48 48" fill="none">
-          <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/>
-          <path d="M15 24l6 6 12-12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+        <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2.5"/><path d="M15 24l6 6 12-12" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <p class="art-banner__text">
         Nuestros informes técnicos están diseñados para cumplir con las exigencias de
-        <strong>aseguradoras y auditorías de ART</strong>. Documentación lista para presentación regulatoria.
+        <strong>aseguradoras y auditorías de ART</strong>.
+        Documentación técnica lista para presentación regulatoria.
       </p>
       <a href="#contacto" class="btn btn--white">Solicitar Informe</a>
+    </div>
+  </section>
+
+  <!-- ===== CAPACITACIÓN ===== -->
+  <section class="training">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Valor Agregado</span>
+        <h2 class="section-title reveal" style="margin-top:16px">Capacitación Técnica <span class="gradient-text">Especializada</span></h2>
+        <p class="section-subtitle reveal">Formación certificada para operadores, eslingadores y personal de seguridad. Cumplimiento de la Res. SRT 960/15 y Ley 19.587.</p>
+      </div>
+      <div class="training__grid">
+        <div class="training__card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <h4>Operadores de Grúa</h4>
+          <p>Teoría y práctica en maniobras seguras, señalética y límites de carga según normativa vigente.</p>
+        </div>
+        <div class="training__card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M12 22V12M12 12L8 8M12 12L16 8"/><path d="M20 16.58A5 5 0 0018 7h-1.26A8 8 0 104 15.25"/></svg>
+          <h4>Eslingadores</h4>
+          <p>Selección, inspección y uso correcto de eslingas, grilletes y aparejos de izaje.</p>
+        </div>
+        <div class="training__card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          <h4>Higiene y Seguridad</h4>
+          <p>Marco normativo, evaluación de riesgos y prevención de accidentes en entornos industriales.</p>
+        </div>
+        <div class="training__card reveal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="36" height="36"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          <h4>Certificaciones</h4>
+          <p>Emisión de certificados para auditorías internas, habilitaciones de equipos y requisitos de ART.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -359,91 +752,71 @@
     <div class="container">
       <div class="section-header">
         <p class="section-label">Consulta Técnica Directa</p>
-        <h2 class="section-title">Hable con <span class="gradient-text">los Ingenieros</span></h2>
-        <p class="section-subtitle">Contacto directo con los profesionales a cargo. Sin intermediarios, sin formularios sin respuesta.</p>
+        <h2 class="section-title reveal">Hable con <span class="gradient-text">los Ingenieros</span></h2>
+        <p class="section-subtitle reveal">Contacto directo con los profesionales a cargo. Sin intermediarios.</p>
       </div>
 
       <div class="contact__grid">
 
-        <!-- Tarjeta Ing. Vidal -->
-        <div class="contact__card stagger-item">
-          <div class="contact__avatar">
-            <span>FV</span>
-          </div>
-          <div class="contact__info">
-            <span class="contact__role">Ing. Químico</span>
-            <h3 class="contact__name">Félix Raúl Vidal</h3>
-            <p class="contact__spec">Especialista en Higiene Laboral · Mediciones Ambientales · Gestión de Riesgos Químicos</p>
-          </div>
-          <div class="contact__links">
-            <a href="tel:+5492804551369" class="contact__link contact__link--phone">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-              </svg>
+        <!-- Ing. Vidal -->
+        <div class="contact__card reveal">
+          <div class="contact__avatar contact__avatar--blue">FV</div>
+          <span class="contact__role">Ing. Químico</span>
+          <h3 class="contact__name">Félix Raúl Vidal</h3>
+          <p class="contact__spec">Especialista en Higiene Laboral · Mediciones Ambientales · Gestión de Riesgos Químicos</p>
+          <div class="contact__actions">
+            <a href="tel:+5492804551369" class="contact__btn contact__btn--phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
               +54 9 280 455-1369
             </a>
-            <a href="mailto:felixraul@gmail.com" class="contact__link contact__link--email">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
+            <a href="mailto:felixraul@gmail.com" class="contact__btn contact__btn--email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               felixraul@gmail.com
             </a>
-            <a href="https://wa.me/5492804551369?text=Hola%20Ing.%20Vidal%2C%20necesito%20una%20consulta%20t%C3%A9cnica." target="_blank" rel="noopener" class="contact__link contact__link--wa">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
+            <a href="https://wa.me/5492804551369?text=Hola%20Ing.%20Vidal%2C%20necesito%20una%20consulta%20t%C3%A9cnica." target="_blank" rel="noopener" class="contact__btn contact__btn--wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               WhatsApp
             </a>
           </div>
         </div>
 
-        <!-- Tarjeta Ing. Galarza -->
-        <div class="contact__card stagger-item">
-          <div class="contact__avatar contact__avatar--alt">
-            <span>AG</span>
-          </div>
-          <div class="contact__info">
-            <span class="contact__role">Ing. Mecánico</span>
-            <h3 class="contact__name">Aldo Leónidas Galarza</h3>
-            <p class="contact__spec">Especialista en Izaje · Aparatos a Presión · Ensayos No Destructivos · Integridad Mecánica</p>
-          </div>
-          <div class="contact__links">
-            <a href="tel:+5492804551369" class="contact__link contact__link--phone">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-              </svg>
+        <!-- Ing. Galarza -->
+        <div class="contact__card reveal">
+          <div class="contact__avatar contact__avatar--purple">AG</div>
+          <span class="contact__role">Ing. Mecánico</span>
+          <h3 class="contact__name">Aldo Leónidas Galarza</h3>
+          <p class="contact__spec">Especialista en Izaje · Aparatos a Presión · Ensayos No Destructivos · Integridad Mecánica</p>
+          <div class="contact__actions">
+            <a href="tel:+5492804551369" class="contact__btn contact__btn--phone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 012 1.18 2 2 0 014 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
               +54 9 280 455-1369
             </a>
-            <a href="mailto:gv_ingenieros@gmail.com" class="contact__link contact__link--email">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
+            <a href="mailto:gv_ingenieros@gmail.com" class="contact__btn contact__btn--email">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               gv_ingenieros@gmail.com
             </a>
-            <a href="https://wa.me/5492804551369?text=Hola%20Ing.%20Galarza%2C%20necesito%20una%20consulta%20t%C3%A9cnica." target="_blank" rel="noopener" class="contact__link contact__link--wa">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
+            <a href="https://wa.me/5492804551369?text=Hola%20Ing.%20Galarza%2C%20necesito%20una%20consulta%20t%C3%A9cnica." target="_blank" rel="noopener" class="contact__btn contact__btn--wa">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               WhatsApp
             </a>
           </div>
         </div>
 
-        <!-- Contacto rápido -->
-        <div class="contact__quick stagger-item">
-          <h3 class="contact__quick-title">Consulta Rápida</h3>
-          <form class="contact__form" id="contactForm">
-            <div class="form__group">
-              <label for="nombre">Nombre / Empresa</label>
-              <input type="text" id="nombre" placeholder="Ej: Industrias S.A." required />
+        <!-- Formulario rápido -->
+        <div class="contact__form-wrap reveal">
+          <h3>Consulta Rápida</h3>
+          <form class="cform" id="contactForm">
+            <div class="cform__row">
+              <div class="cform__field">
+                <label for="nombre">Empresa / Contacto</label>
+                <input type="text" id="nombre" placeholder="Industrias S.A." required />
+              </div>
+              <div class="cform__field">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="contacto@empresa.com" required />
+              </div>
             </div>
-            <div class="form__group">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="contacto@empresa.com" required />
-            </div>
-            <div class="form__group">
+            <div class="cform__field">
               <label for="servicio">Servicio requerido</label>
               <select id="servicio" required>
                 <option value="">Seleccionar...</option>
@@ -451,14 +824,17 @@
                 <option>Higiene Laboral</option>
                 <option>Aparatos a Presión</option>
                 <option>Capacitación</option>
-                <option>Otro / Consulta general</option>
+                <option>Consulta general</option>
               </select>
             </div>
-            <div class="form__group">
-              <label for="mensaje">Mensaje</label>
+            <div class="cform__field">
+              <label for="mensaje">Mensaje (opcional)</label>
               <textarea id="mensaje" rows="3" placeholder="Describa brevemente su necesidad..."></textarea>
             </div>
-            <button type="submit" class="btn btn--primary btn--full">Enviar Consulta</button>
+            <button type="submit" class="btn btn--primary btn--full">
+              Enviar por WhatsApp
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </button>
           </form>
         </div>
 
@@ -471,15 +847,16 @@
     <div class="container footer__inner">
       <div class="footer__brand">
         <a href="#inicio" class="logo">
-          <span class="logo__mark">GV</span>
-          <span class="logo__text">Ingenieros</span>
+          <span class="logo__gv">GV</span>
+          <span class="logo__sep"></span>
+          <span class="logo__ingenieros">INGENIEROS</span>
         </a>
-        <p class="footer__tagline">Ingeniería de Integridad y Seguridad Industrial.<br />Patagonia · Argentina</p>
+        <p>Ingeniería de Integridad y Seguridad Industrial.<br />Comodoro Rivadavia · Patagonia · Argentina</p>
         <div class="footer__norms">
           <span>ASME</span><span>ISO</span><span>IRAM</span><span>Ley 19.587</span>
         </div>
       </div>
-      <div class="footer__nav">
+      <div class="footer__col">
         <h4>Servicios</h4>
         <ul>
           <li><a href="#izaje">Sistemas de Izaje</a></li>
@@ -488,41 +865,34 @@
           <li><a href="#normativas">Normativas</a></li>
         </ul>
       </div>
-      <div class="footer__nav">
+      <div class="footer__col">
         <h4>Empresa</h4>
         <ul>
-          <li><a href="#servicios">Tres Pilares</a></li>
+          <li><a href="#servicios">Nuestros Servicios</a></li>
           <li><a href="#contacto">Contacto</a></li>
           <li><a href="https://wa.me/5492804551369" target="_blank" rel="noopener">WhatsApp</a></li>
         </ul>
       </div>
-      <div class="footer__contact">
+      <div class="footer__col footer__col--contact">
         <h4>Contacto Directo</h4>
         <a href="tel:+5492804551369">+54 9 280 455-1369</a>
         <a href="mailto:felixraul@gmail.com">felixraul@gmail.com</a>
         <a href="mailto:gv_ingenieros@gmail.com">gv_ingenieros@gmail.com</a>
-        <p class="footer__location">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
-            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-            <circle cx="12" cy="10" r="3"/>
-          </svg>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
           Comodoro Rivadavia, Chubut
-        </p>
+        </span>
       </div>
     </div>
     <div class="footer__bottom">
-      <div class="container">
-        <p>© 2025 GV Ingenieros. Todos los derechos reservados.</p>
-      </div>
+      <div class="container">© 2025 GV Ingenieros. Todos los derechos reservados.</div>
     </div>
   </footer>
 
-  <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
-  <a href="https://wa.me/5492804551369?text=Hola%2C%20necesito%20una%20consulta%20t%C3%A9cnica%20de%20GV%20Ingenieros." target="_blank" rel="noopener" class="wa-float" id="waFloat" aria-label="Contactar por WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-    <span class="wa-float__tooltip">¿Necesita una inspección?</span>
+  <!-- ===== WHATSAPP FLOTANTE ===== -->
+  <a href="https://wa.me/5492804551369?text=Hola%2C%20necesito%20una%20consulta%20t%C3%A9cnica%20con%20GV%20Ingenieros." target="_blank" rel="noopener" class="wa-btn" id="waBtn" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-btn__tip">¿Necesita una inspección?</span>
   </a>
 
   <script src="script.js"></script>
