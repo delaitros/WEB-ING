@@ -1368,6 +1368,32 @@ ul { list-style: none; }
   /* Ocultar <br> del hero title en mobile para que fluya naturalmente */
   .hero__title br { display: none; }
 
+  /* ---- Hero: centrar en mobile ---- */
+  .hero__content { text-align: center; max-width: 100%; }
+  .hero__eyebrow { justify-content: center; }
+  .hero__norms { justify-content: center; }
+  .hero__actions { justify-content: center; }
+  .hero__stats { justify-content: center; }
+
+  /* ---- Bento cards: centrar contenido en mobile ---- */
+  .bento__card-content { text-align: center; align-items: center; }
+  /* mantener bullets legibles: alineados a izquierda internamente */
+  .feat-list { align-items: flex-start; width: 100%; }
+
+  /* ---- Service groups: centrar en mobile ---- */
+  .svc-group { text-align: center; }
+  .svc-group__header { justify-content: center; }
+  .svc-item { flex-direction: column; align-items: center; text-align: center; }
+  .svc-item svg { margin-top: 0; }
+
+  /* ---- Trazabilidad: centrar texto en mobile ---- */
+  .trace__lead { text-align: center; }
+  .trace__feat { flex-direction: column; align-items: center; text-align: center; }
+  .trace__feat-icon { flex-shrink: 0; }
+
+  /* ---- Training cards: centrar en mobile ---- */
+  .training__card { align-items: center; text-align: center; }
+
   /* ---- Contact cards: centrar contenido en mobile ---- */
   .contact__card {
     align-items: center;
@@ -1397,7 +1423,7 @@ ul { list-style: none; }
   .hero__title { font-size: 2.4rem; }
   .hero__actions { flex-direction: column; }
   .hero__actions .btn { width: 100%; }
-  .hero__stats { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .hero__stats { flex-direction: column; align-items: center; gap: 16px; }
   .stat__divider { display: none; }
   .training__grid { grid-template-columns: 1fr; }
   .svc-section__banner { height: 200px; }
