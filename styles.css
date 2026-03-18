@@ -417,9 +417,16 @@ ul { list-style: none; }
   flex-wrap: wrap;
 }
 .stat { display: flex; flex-direction: column; }
+
+/* wrapper garantiza que número y signo estén en la misma línea */
+.stat__value {
+  display: flex;
+  align-items: baseline;
+  gap: 1px;
+  line-height: 1;
+}
 .stat__number {
-  display: inline-block;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 900;
   font-family: var(--font-mono);
   color: var(--text);
@@ -427,11 +434,13 @@ ul { list-style: none; }
   line-height: 1;
 }
 .stat__plus {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 900;
   color: var(--brand-teal);
-  vertical-align: super;
   font-family: var(--font-mono);
+  line-height: 1;
+  align-self: flex-start;
+  margin-top: 2px;
 }
 .stat__label {
   font-size: 0.72rem;
@@ -469,32 +478,31 @@ ul { list-style: none; }
 }
 
 /* ============================================================
-   NORMATIVE STRIP
+   NORMATIVE STRIP — layout centrado vertical
    ============================================================ */
 .norm-strip {
   background: var(--bg-2);
   border-top:    1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  padding: 22px 0;
+  padding: 32px 0;
 }
 .norm-strip__inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 28px;
-  flex-wrap: wrap;
+  gap: 16px;
 }
 .norm-strip__label {
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: var(--text-3);
   text-transform: uppercase;
-  letter-spacing: 0.09em;
-  white-space: nowrap;
-  padding-right: 20px;
-  border-right: 1px solid var(--border);
+  letter-spacing: 0.12em;
+  text-align: center;
 }
 .norm-strip__logos {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
 }
@@ -1333,9 +1341,8 @@ ul { list-style: none; }
   .footer__brand { grid-column: auto; }
   .hero__scroll-cue { display: none; }
   .art-banner__inner { flex-direction: column; text-align: center; }
-  .norm-strip__inner { flex-direction: column; align-items: flex-start; gap: 14px; }
-  .norm-strip__label { border-right: none; padding-right: 0; }
-  .norm-strip__logos { justify-content: flex-start; }
+  /* norm-strip ya es columna centrada — en mobile solo ajustar logos */
+  .norm-strip__logos { gap: 6px; }
   .svc-section__banner { height: 240px; }
 
   /* Banners de servicio: centrar texto en mobile */
