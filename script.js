@@ -2,6 +2,29 @@
    GV INGENIEROS — script.js v2
    ============================================================ */
 
+/* ---- THEME TOGGLE ---- */
+(function () {
+  const root = document.documentElement;
+  // Apply saved theme immediately to avoid flash
+  if (localStorage.getItem('gv-theme') === 'light') {
+    root.setAttribute('data-theme', 'light');
+  }
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+      const isLight = root.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('gv-theme', 'dark');
+      } else {
+        root.setAttribute('data-theme', 'light');
+        localStorage.setItem('gv-theme', 'light');
+      }
+    });
+  });
+})();
+
 /* ---- SPLASH SCREEN ---- */
 (function () {
   const splash = document.getElementById('splash');

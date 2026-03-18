@@ -42,6 +42,87 @@
   --spring: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* ---- Light theme overrides ---- */
+[data-theme="light"] {
+  --bg:        #f4f6fc;
+  --bg-2:      #edf0f8;
+  --bg-3:      #e4e8f3;
+  --bg-card:   #ffffff;
+  --border:    rgba(0,0,0,0.08);
+  --border-h:  rgba(0,0,0,0.16);
+  --text:      #0d1117;
+  --text-2:    #4b5467;
+  --text-3:    #8892a8;
+  --shadow:    0 4px 32px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 64px rgba(0,0,0,0.16);
+  --accent-glow: rgba(26,86,219,0.15);
+}
+
+/* Elements with hardcoded dark RGBA — override in light mode */
+[data-theme="light"] .header.scrolled {
+  background: rgba(244,246,252,0.94);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+}
+[data-theme="light"] .logo__sep { background: rgba(0,0,0,0.15); }
+[data-theme="light"] .nav__link:hover,
+[data-theme="light"] .nav__link--active { background: rgba(0,0,0,0.05); }
+/* Mobile nav panel */
+[data-theme="light"] .nav {
+  background: rgba(244,246,252,0.98) !important;
+  border-bottom-color: rgba(0,0,0,0.08);
+}
+/* Hero overlay: keep dark enough for text readability */
+[data-theme="light"] .hero__overlay { opacity: 0.6; }
+/* svc-items: flip the rgba white tints to rgba black */
+[data-theme="light"] .svc-item {
+  background: rgba(0,0,0,0.025);
+  border-color: rgba(0,0,0,0.07);
+}
+[data-theme="light"] .svc-item:hover {
+  background: rgba(0,0,0,0.045);
+  border-color: rgba(0,0,0,0.13);
+}
+/* Bento cards: keep border visible */
+[data-theme="light"] .bento__card { border-color: rgba(0,0,0,0.08); }
+/* Report card inside trace section */
+[data-theme="light"] .report-card {
+  background: var(--bg-card);
+  border-color: rgba(0,0,0,0.09);
+}
+[data-theme="light"] .report-card__header { background: var(--bg-3); }
+[data-theme="light"] .report-row { border-bottom-color: rgba(0,0,0,0.06); }
+/* ART banner */
+[data-theme="light"] .art-banner { background: var(--bg-2); border-color: rgba(0,0,0,0.08); }
+/* Nav toggle bars */
+[data-theme="light"] .nav__toggle span { background: var(--text); }
+/* Splash stays dark regardless */
+
+/* ---- Theme Toggle Button ---- */
+.theme-toggle {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-2);
+  transition: color var(--t), border-color var(--t), background var(--t);
+  padding: 0;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
+.theme-toggle:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.06);
+  border-color: var(--border-h);
+}
+[data-theme="light"] .theme-toggle:hover { background: rgba(0,0,0,0.05); }
+/* Show sun in dark mode (click → go light), moon in light mode (click → go dark) */
+.theme-toggle__sun  { display: block; }
+.theme-toggle__moon { display: none; }
+[data-theme="light"] .theme-toggle__sun  { display: none; }
+[data-theme="light"] .theme-toggle__moon { display: block; }
+
 /* ---- Reset ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html {
