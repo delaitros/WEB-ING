@@ -49,14 +49,16 @@
 })();
 
 /* ---- Header scroll state ---- */
-const header = document.getElementById('header');
+const header  = document.getElementById('header');
 const waBtn   = document.getElementById('waBtn');
+const hasHero = !!document.getElementById('heroParallax');
 
 function onScroll() {
   const y = window.scrollY;
-  header.classList.toggle('scrolled', y > 20);
+  // Only toggle scrolled class when there's a hero (subpages keep header always opaque)
+  if (hasHero) header.classList.toggle('scrolled', y > 20);
   // Show WA button after 300px
-  waBtn.classList.toggle('visible', y > 300);
+  if (waBtn) waBtn.classList.toggle('visible', y > 300);
   // Parallax hero bg
   const heroBg = document.getElementById('heroParallax');
   if (heroBg) heroBg.style.transform = `translateY(${y * 0.28}px)`;
@@ -153,8 +155,25 @@ const sectionObserver = new IntersectionObserver((entries) => {
 
 sections.forEach(s => sectionObserver.observe(s));
 
+/* ---- Nav Dropdown ---- */
+document.querySelectorAll('.nav__dropdown').forEach(dropdown => {
+  const btn = dropdown.querySelector('.nav__dropdown-btn');
+  if (!btn) return;
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    dropdown.classList.toggle('open');
+    document.querySelectorAll('.nav__dropdown').forEach(other => {
+      if (other !== dropdown) other.classList.remove('open');
+    });
+  });
+});
+document.addEventListener('click', () => {
+  document.querySelectorAll('.nav__dropdown').forEach(d => d.classList.remove('open'));
+});
+
 /* ---- Contact form → WhatsApp ---- */
-document.getElementById('contactForm').addEventListener('submit', e => {
+const _contactForm = document.getElementById('contactForm');
+if (_contactForm) _contactForm.addEventListener('submit', e => {
   e.preventDefault();
   const nombre   = document.getElementById('nombre').value.trim();
   const email    = document.getElementById('email').value.trim();

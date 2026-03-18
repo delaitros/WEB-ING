@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historia — GV Ingenieros</title>
+  <meta name="description" content="Más de 15 años de trayectoria en ingeniería de integridad industrial en la Patagonia argentina. Conocé nuestra historia." />
+  <script>if(localStorage.getItem('gv-theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header scrolled" id="header">
+    <div class="container header__inner">
+      <a href="./index.html" class="logo">
+        <span class="logo__gv">GV</span>
+        <span class="logo__sep"></span>
+        <span class="logo__ingenieros">INGENIEROS</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="./index.html#izaje"      class="nav__link">Izaje</a>
+        <a href="./index.html#higiene"    class="nav__link">Higiene Laboral</a>
+        <a href="./index.html#presion"    class="nav__link">Presión</a>
+        <a href="./index.html#normativas" class="nav__link">Normativas</a>
+        <div class="nav__dropdown">
+          <button class="nav__dropdown-btn nav__link--active">
+            Empresa
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="nav__dropdown-menu">
+            <a href="./nosotros.html">Acerca de Nosotros</a>
+            <a href="./historia.html" style="color:var(--text);font-weight:600;">Historia</a>
+            <a href="./proyectos.html">Proyectos Realizados</a>
+          </div>
+        </div>
+        <a href="./index.html#contacto" class="btn btn--primary nav__cta">Solicitar Inspección</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+        <svg class="theme-toggle__sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="theme-toggle__moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container">
+      <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
+        <a href="./index.html">Inicio</a>
+        <span>›</span>
+        <span style="color:var(--text-2)">Historia</span>
+      </nav>
+      <span class="section-label">Trayectoria</span>
+      <h1 class="page-hero__title">Nuestra<br /><span class="gradient-text">Historia</span></h1>
+      <p class="page-hero__sub">Desde 2008, construimos trayectoria en la Patagonia con cada proyecto, cada certificación y cada empresa que confió en nosotros.</p>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <section class="section" style="padding:80px 0;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:64px;align-items:start;">
+
+        <div class="reveal" style="position:sticky;top:calc(var(--header-h) + 32px);">
+          <span class="section-label">15 Años</span>
+          <h2 class="section-title" style="margin-bottom:20px;">Una historia de crecimiento constante</h2>
+          <p style="font-size:0.9rem;color:var(--text-2);line-height:1.7;">
+            Lo que comenzó como una pequeña consultora técnica en Comodoro Rivadavia se convirtió en una de las empresas de referencia en inspección e integridad industrial de la Patagonia argentina.
+          </p>
+          <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;">
+              <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;"><span data-target="2008">0</span></div>
+              <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);margin-top:4px;">Fundación</div>
+            </div>
+            <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;text-align:center;">
+              <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;"><span data-target="500">0</span><span style="color:var(--brand-teal);font-size:1.4rem;">+</span></div>
+              <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-3);margin-top:4px;">Empresas</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="timeline">
+
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2008</div>
+              <div class="timeline__title">Fundación de GV Ingenieros</div>
+              <div class="timeline__desc">El Ing. Gabriel Villalba funda la empresa en Comodoro Rivadavia con foco en inspección técnica para la industria petrolera de la Cuenca del Golfo San Jorge. Los primeros clientes son contratistas de YPF y Repsol.</div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2010</div>
+              <div class="timeline__title">Primera habilitación para equipos de izaje</div>
+              <div class="timeline__desc">Se obtiene la primera habilitación municipal para la inspección y certificación de equipos de izaje. Se incorpora el Tec. Martín Soriano como especialista en grúas y malacates industriales.</div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2012</div>
+              <div class="timeline__title">Área de Higiene y Seguridad Laboral</div>
+              <div class="timeline__desc">Se formaliza el área de Higiene y Seguridad Laboral para dar respuesta a la Ley 19.587. La Lic. Carolina Rivas lidera el nuevo departamento. En menos de un año, la empresa ya cuenta con más de 30 planes de seguridad activos en empresas de la región.</div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2014</div>
+              <div class="timeline__title">Primer proyecto con empresa multinacional</div>
+              <div class="timeline__desc">Pan American Energy (PAE) contrata a GV Ingenieros para el desarrollo de su programa de higiene y seguridad en operaciones de Chubut, marcando el inicio de una relación comercial sostenida. Es el primer proyecto de escala nacional.</div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2015</div>
+              <div class="timeline__title">Expansión a toda la cuenca del GSJ</div>
+              <div class="timeline__desc">La empresa amplía su alcance geográfico a toda la Cuenca del Golfo San Jorge, cubriendo operaciones en Comodoro Rivadavia, Caleta Olivia y Pico Truncado. Se incorpora un segundo equipo de inspectores para cubrir la demanda creciente.</div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2017</div>
+              <div class="timeline__title">Certificación ASME VIII y B30</div>
+              <div class="timeline__desc">El equipo técnico completa la certificación bajo normas ASME VIII División 1 (recipientes a presión) y B30.2/B30.5 (equipos de izaje). La Ing. Laura Pérez se incorpora con especialización en ensayos no destructivos nivel II.</div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2019</div>
+              <div class="timeline__title">Tecnología de ultrasonido industrial</div>
+              <div class="timeline__desc">Se adquiere equipamiento avanzado de ultrasonido para ensayos no destructivos (END). Esto permite ofrecer inspecciones de espesores y detección de discontinuidades sin intervención invasiva, reduciendo los tiempos de parada de planta.</div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2021</div>
+              <div class="timeline__title">Ingreso al mercado de energías renovables</div>
+              <div class="timeline__desc">GV Ingenieros participa en los proyectos de montaje de parques eólicos en Neuquén y Santa Cruz, realizando el plan de izaje para aerogeneradores de la empresa AES Argentina. Se consolida la presencia en el sector de energías limpias.</div>
+            </div>
+
+            <div class="timeline__item">
+              <div class="timeline__dot" style="background:var(--brand-teal);box-shadow:0 0 0 2px var(--brand-teal);"></div>
+              <div class="timeline__year">2023 — HOY</div>
+              <div class="timeline__title">15 años, 500+ empresas, nueva etapa</div>
+              <div class="timeline__desc">GV Ingenieros celebra 15 años de actividad ininterrumpida con más de 500 empresas atendidas en toda la Patagonia. Se inaugura la nueva sede en Comodoro Rivadavia y se incorpora una plataforma digital de trazabilidad documental.</div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section style="padding:72px 0;background:var(--bg-2);border-top:1px solid var(--border);">
+    <div class="container" style="text-align:center;">
+      <div class="reveal">
+        <span class="section-label">¿Trabajamos juntos?</span>
+        <h2 class="section-title" style="margin-bottom:16px;">Más de 15 años a su servicio</h2>
+        <p style="font-size:1rem;color:var(--text-2);max-width:480px;margin:0 auto 32px;line-height:1.7;">
+          Ponemos nuestra trayectoria y experiencia al servicio de su empresa. Solicite una consulta sin cargo.
+        </p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="./index.html#contacto" class="btn btn--primary btn--lg">Solicitar Inspección</a>
+          <a href="./proyectos.html" class="btn btn--ghost btn--lg">Ver Proyectos →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="./index.html" class="logo">
+          <span class="logo__gv">GV</span>
+          <span class="logo__sep"></span>
+          <span class="logo__ingenieros">INGENIEROS</span>
+        </a>
+        <p>Ingeniería de Integridad y Seguridad Industrial.<br />Comodoro Rivadavia · Patagonia · Argentina</p>
+        <div class="footer__norms">
+          <span>ASME</span><span>ISO</span><span>IRAM</span><span>Ley 19.587</span>
+        </div>
+      </div>
+      <div class="footer__col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="./index.html#izaje">Sistemas de Izaje</a></li>
+          <li><a href="./index.html#higiene">Higiene Laboral</a></li>
+          <li><a href="./index.html#presion">Aparatos a Presión</a></li>
+          <li><a href="./index.html#normativas">Normativas</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="./nosotros.html">Acerca de Nosotros</a></li>
+          <li><a href="./historia.html">Historia</a></li>
+          <li><a href="./proyectos.html">Proyectos Realizados</a></li>
+          <li><a href="./index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="footer__col footer__col--contact">
+        <h4>Contacto Directo</h4>
+        <a href="tel:+5492804551369">+54 9 280 455-1369</a>
+        <a href="mailto:felixraul@gmail.com">felixraul@gmail.com</a>
+        <a href="mailto:gv_ingenieros@gmail.com">gv_ingenieros@gmail.com</a>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Comodoro Rivadavia, Chubut
+        </span>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">© 2025 GV Ingenieros. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <!-- ===== WA FLOTANTE ===== -->
+  <a href="https://wa.me/5492804551369?text=Hola%2C%20necesito%20una%20consulta%20t%C3%A9cnica%20con%20GV%20Ingenieros." target="_blank" rel="noopener" class="wa-btn" id="waBtn" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-btn__tip">¿Necesita una inspección?</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
