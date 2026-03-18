@@ -1375,14 +1375,22 @@ ul { list-style: none; }
   .hero__actions { justify-content: center; }
   .hero__stats { justify-content: center; }
   /* cada stat centrado individualmente */
-  .stat { align-items: center; }
+  .stat { align-items: center; text-align: center; }
+  .stat__label { text-align: center; }
 
   /* ---- Bento cards: centrar contenido en mobile ---- */
   .bento__card-content { text-align: center; align-items: center; }
-  /* feat-list centrado: bullet inline en lugar de absoluto */
+  /* feat-list centrado: items como flex row centrado */
   .feat-list { align-items: center; width: 100%; }
-  .feat-list li { padding-left: 0; text-align: center; }
-  .feat-list li::before { position: static; display: inline-block; transform: none; vertical-align: middle; margin-right: 7px; margin-bottom: 1px; }
+  .feat-list li {
+    padding-left: 0;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+  }
+  .feat-list li::before { position: static; flex-shrink: 0; transform: none; }
 
   /* ---- Service groups: centrar en mobile ---- */
   .svc-group { text-align: center; }
@@ -1392,7 +1400,9 @@ ul { list-style: none; }
   .svc-item svg { margin-top: 0; }
 
   /* ---- Trazabilidad: centrar texto en mobile ---- */
+  .trace__text { text-align: center; }
   .trace__lead { text-align: center; }
+  .trace__feats { align-items: center; }
   .trace__feat { flex-direction: column; align-items: center; text-align: center; }
   .trace__feat-icon { flex-shrink: 0; }
 
