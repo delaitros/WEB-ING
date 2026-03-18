@@ -1374,15 +1374,20 @@ ul { list-style: none; }
   .hero__norms { justify-content: center; }
   .hero__actions { justify-content: center; }
   .hero__stats { justify-content: center; }
+  /* cada stat centrado individualmente */
+  .stat { align-items: center; }
 
   /* ---- Bento cards: centrar contenido en mobile ---- */
   .bento__card-content { text-align: center; align-items: center; }
-  /* mantener bullets legibles: alineados a izquierda internamente */
-  .feat-list { align-items: flex-start; width: 100%; }
+  /* feat-list centrado: bullet inline en lugar de absoluto */
+  .feat-list { align-items: center; width: 100%; }
+  .feat-list li { padding-left: 0; text-align: center; }
+  .feat-list li::before { position: static; display: inline-block; transform: none; vertical-align: middle; margin-right: 7px; margin-bottom: 1px; }
 
   /* ---- Service groups: centrar en mobile ---- */
   .svc-group { text-align: center; }
-  .svc-group__header { justify-content: center; }
+  /* Ícono ARRIBA del texto en mobile */
+  .svc-group__header { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
   .svc-item { flex-direction: column; align-items: center; text-align: center; }
   .svc-item svg { margin-top: 0; }
 
