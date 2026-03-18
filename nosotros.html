@@ -49,57 +49,82 @@
     </div>
   </header>
 
-  <!-- ===== PAGE HERO ===== -->
-  <section class="page-hero">
-    <div class="container">
-      <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
-        <a href="./index.html">Inicio</a>
-        <span>›</span>
-        <span style="color:var(--text-2)">Acerca de Nosotros</span>
-      </nav>
-      <span class="section-label">Empresa</span>
-      <h1 class="page-hero__title">Quiénes<br /><span class="gradient-text">Somos</span></h1>
-      <p class="page-hero__sub">Más de 15 años desarrollando ingeniería de integridad industrial en la Patagonia argentina, con el compromiso de reducir el riesgo operativo de nuestros clientes.</p>
+  <!-- ===== SUBHERO ===== -->
+  <section class="subhero">
+    <div class="subhero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=1920&q=75"
+        alt="Equipo de ingenieros en planta industrial"
+        class="subhero__bg-img"
+      />
+    </div>
+    <div class="subhero__overlay"></div>
+    <div class="subhero__grid"></div>
+    <div class="subhero__content">
+      <div class="container">
+        <nav class="subhero__breadcrumb" aria-label="Breadcrumb">
+          <a href="./index.html">Inicio</a>
+          <span class="sep">›</span>
+          <span>Acerca de Nosotros</span>
+        </nav>
+        <span class="subhero__label">Empresa</span>
+        <h1 class="subhero__title">
+          Quiénes<br />
+          <span class="gradient-text">Somos</span>
+        </h1>
+        <p class="subhero__sub">
+          Más de 15 años desarrollando ingeniería de integridad industrial en la Patagonia argentina, con el compromiso de reducir el riesgo operativo de nuestros clientes.
+        </p>
+      </div>
     </div>
   </section>
 
   <!-- ===== MISIÓN Y VISIÓN ===== -->
   <section class="section" style="padding:80px 0;">
     <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+      <div class="grid-2">
 
         <div class="reveal">
           <span class="section-label">Propósito</span>
           <h2 class="section-title" style="margin-bottom:20px;">Nuestra Misión</h2>
-          <p style="font-size:0.97rem;color:var(--text-2);line-height:1.75;margin-bottom:24px;">
+          <p class="section-subtitle" style="margin-top:0;max-width:100%;">
             Brindar servicios de certificación, inspección y auditoría técnica que garanticen el cumplimiento normativo nacional e internacional, protejan la integridad de las instalaciones industriales y resguarden la vida de las personas que trabajan en ellas.
           </p>
-          <div style="display:flex;flex-direction:column;gap:12px;">
-            <div style="display:flex;align-items:flex-start;gap:12px;">
-              <div style="width:7px;height:7px;border-radius:50%;background:var(--brand-teal);margin-top:8px;flex-shrink:0;"></div>
-              <p style="font-size:0.88rem;color:var(--text-2);">Reducción real del riesgo operativo mediante inspecciones técnicas rigurosas.</p>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:12px;">
-              <div style="width:7px;height:7px;border-radius:50%;background:var(--brand-teal);margin-top:8px;flex-shrink:0;"></div>
-              <p style="font-size:0.88rem;color:var(--text-2);">Cumplimiento normativo integral bajo estándares locales e internacionales.</p>
-            </div>
-            <div style="display:flex;align-items:flex-start;gap:12px;">
-              <div style="width:7px;height:7px;border-radius:50%;background:var(--brand-teal);margin-top:8px;flex-shrink:0;"></div>
-              <p style="font-size:0.88rem;color:var(--text-2);">Documentación técnica completa con trazabilidad 100% verificable.</p>
-            </div>
-          </div>
+          <ul class="bullet-list">
+            <li class="bullet-list__item">
+              <span class="bullet-list__dot"></span>
+              <span class="bullet-list__text">Reducción real del riesgo operativo mediante inspecciones técnicas rigurosas.</span>
+            </li>
+            <li class="bullet-list__item">
+              <span class="bullet-list__dot"></span>
+              <span class="bullet-list__text">Cumplimiento normativo integral bajo estándares locales e internacionales.</span>
+            </li>
+            <li class="bullet-list__item">
+              <span class="bullet-list__dot"></span>
+              <span class="bullet-list__text">Documentación técnica completa con trazabilidad 100% verificable.</span>
+            </li>
+          </ul>
         </div>
 
-        <div class="reveal" style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:36px;">
-          <span class="section-label">Visión</span>
-          <p style="font-size:1rem;line-height:1.75;color:var(--text-2);margin-top:12px;">
-            Ser la empresa de ingeniería de integridad industrial de referencia en la Patagonia, reconocida por la solidez técnica de sus profesionales, la excelencia en el servicio y su compromiso con la seguridad y el medio ambiente.
-          </p>
-          <div style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border);">
-            <span class="section-label">Zona de Cobertura</span>
-            <p style="font-size:0.87rem;color:var(--text-2);margin-top:8px;line-height:1.65;">
-              Comodoro Rivadavia · Cuenca del Golfo San Jorge · Neuquén · Santa Cruz · Toda la Patagonia
+        <div class="reveal">
+          <div class="img-feature" style="margin-bottom:24px;">
+            <img
+              src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=800&q=75"
+              alt="Inspección industrial"
+            />
+            <div class="img-feature__overlay"></div>
+          </div>
+          <div class="info-card">
+            <span class="section-label">Visión</span>
+            <p style="font-size:0.97rem;color:var(--text-2);line-height:1.75;margin-top:10px;">
+              Ser la empresa de ingeniería de integridad industrial de referencia en la Patagonia, reconocida por la solidez técnica de sus profesionales, la excelencia en el servicio y su compromiso con la seguridad y el medio ambiente.
             </p>
+            <div class="info-card__divider">
+              <span class="section-label">Zona de Cobertura</span>
+              <p style="font-size:0.86rem;color:var(--text-2);margin-top:8px;line-height:1.65;">
+                Comodoro Rivadavia · Cuenca GSJ · Neuquén · Santa Cruz · Toda la Patagonia
+              </p>
+            </div>
           </div>
         </div>
 
@@ -108,7 +133,7 @@
   </section>
 
   <!-- ===== VALORES ===== -->
-  <section class="section" style="padding:80px 0;background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <section style="padding:80px 0;background:var(--bg-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label">Principios</span>
@@ -132,7 +157,7 @@
         </div>
         <div class="value-card reveal">
           <div class="value-card__icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <div class="value-card__title">Excelencia Técnica</div>
           <div class="value-card__text">Actualización permanente en normativas ASME, ISO, IRAM y legislación nacional. Nuestro equipo certifica y recertifica continuamente.</div>
@@ -149,7 +174,7 @@
   </section>
 
   <!-- ===== EQUIPO ===== -->
-  <section class="section" style="padding:80px 0;">
+  <section style="padding:80px 0;">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-label">Personas</span>
@@ -161,13 +186,13 @@
           <div class="team-card__avatar">GV</div>
           <div class="team-card__name">Ing. Gabriel Villalba</div>
           <div class="team-card__role">Director &amp; Fundador</div>
-          <div class="team-card__desc">Ingeniero Mecánico (UNPSJB). Especialista en inspección de equipos de izaje y aparatos a presión. Más de 18 años de trayectoria en la cuenca del Golfo San Jorge. Inspector certificado ASME QS-1.</div>
+          <div class="team-card__desc">Ingeniero Mecánico (UNPSJB). Especialista en inspección de equipos de izaje y aparatos a presión. Más de 18 años de trayectoria en la Cuenca del Golfo San Jorge. Inspector certificado ASME QS-1.</div>
         </div>
         <div class="team-card reveal">
           <div class="team-card__avatar">CR</div>
           <div class="team-card__name">Lic. Carolina Rivas</div>
           <div class="team-card__role">Jefa de Higiene y Seguridad</div>
-          <div class="team-card__desc">Licenciada en Higiene y Seguridad Laboral. Auditora interna ISO 45001. Especializada en elaboración de programas de seguridad y evaluación de riesgos para la industria hidrocarburífera.</div>
+          <div class="team-card__desc">Licenciada en Higiene y Seguridad Laboral. Auditora interna ISO 45001. Especializada en evaluación de riesgos y programas de seguridad para la industria hidrocarburífera.</div>
         </div>
         <div class="team-card reveal">
           <div class="team-card__avatar">MS</div>
@@ -182,6 +207,23 @@
           <div class="team-card__desc">Ingeniera Química (UTN). Especialista en recipientes a presión, calderas y tuberías bajo ASME VIII y PED. Ensayos no destructivos nivel II en ultrasonido y líquidos penetrantes.</div>
         </div>
       </div>
+
+      <!-- Team image banner -->
+      <div class="reveal" style="margin-top:48px;">
+        <div class="img-feature" style="aspect-ratio:21/6;border-radius:var(--radius);">
+          <img
+            src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=1920&q=75"
+            alt="Equipo GV Ingenieros en campo"
+          />
+          <div class="img-feature__overlay" style="background:linear-gradient(to right, rgba(7,9,15,0.75) 30%, rgba(7,9,15,0.3) 70%, rgba(7,9,15,0.6) 100%);"></div>
+          <div style="position:absolute;inset:0;z-index:2;display:flex;align-items:center;padding:40px;">
+            <div>
+              <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand-teal);margin-bottom:10px;">Patagonia · Argentina</p>
+              <p style="font-size:1.3rem;font-weight:700;color:#eef0f8;max-width:400px;line-height:1.4;">Presentes donde la industria lo necesita</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -190,22 +232,37 @@
     <div class="container">
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center;">
         <div class="reveal">
-          <div style="font-size:2.8rem;font-weight:900;letter-spacing:-0.04em;line-height:1;">
+          <div style="font-size:2.8rem;font-weight:900;letter-spacing:-0.04em;line-height:1;color:var(--text);">
             <span data-target="15">0</span><span style="color:var(--brand-teal);font-size:2rem;">+</span>
           </div>
           <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:8px;">Años de Experiencia</div>
         </div>
         <div class="reveal">
-          <div style="font-size:2.8rem;font-weight:900;letter-spacing:-0.04em;line-height:1;">
+          <div style="font-size:2.8rem;font-weight:900;letter-spacing:-0.04em;line-height:1;color:var(--text);">
             <span data-target="500">0</span><span style="color:var(--brand-teal);font-size:2rem;">+</span>
           </div>
           <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:8px;">Empresas Atendidas</div>
         </div>
         <div class="reveal">
-          <div style="font-size:2.8rem;font-weight:900;letter-spacing:-0.04em;line-height:1;">
+          <div style="font-size:2.8rem;font-weight:900;letter-spacing:-0.04em;line-height:1;color:var(--text);">
             <span data-target="3">0</span>
           </div>
           <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:8px;">Unidades Técnicas Especializadas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section style="padding:72px 0;border-top:1px solid var(--border);">
+    <div class="container" style="text-align:center;">
+      <div class="reveal">
+        <span class="section-label">Trabajemos juntos</span>
+        <h2 class="section-title" style="margin-bottom:16px;">¿Necesita asesoramiento técnico?</h2>
+        <p class="section-subtitle" style="margin:0 auto 32px;">Primera consulta sin cargo. Evaluamos las necesidades de su empresa y le presentamos una propuesta.</p>
+        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="./index.html#contacto" class="btn btn--primary btn--lg">Solicitar Inspección</a>
+          <a href="./proyectos.html" class="btn btn--ghost btn--lg">Ver Proyectos →</a>
         </div>
       </div>
     </div>

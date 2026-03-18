@@ -49,17 +49,33 @@
     </div>
   </header>
 
-  <!-- ===== PAGE HERO ===== -->
-  <section class="page-hero">
-    <div class="container">
-      <nav class="page-hero__breadcrumb" aria-label="Breadcrumb">
-        <a href="./index.html">Inicio</a>
-        <span>›</span>
-        <span style="color:var(--text-2)">Proyectos Realizados</span>
-      </nav>
-      <span class="section-label">Portafolio</span>
-      <h1 class="page-hero__title">Proyectos<br /><span class="gradient-text">Realizados</span></h1>
-      <p class="page-hero__sub">Una selección de proyectos de inspección, certificación y seguridad industrial ejecutados en empresas líderes de la Patagonia argentina.</p>
+  <!-- ===== SUBHERO ===== -->
+  <section class="subhero">
+    <div class="subhero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=1920&q=75"
+        alt="Planta industrial Patagonia"
+        class="subhero__bg-img"
+      />
+    </div>
+    <div class="subhero__overlay"></div>
+    <div class="subhero__grid"></div>
+    <div class="subhero__content">
+      <div class="container">
+        <nav class="subhero__breadcrumb" aria-label="Breadcrumb">
+          <a href="./index.html">Inicio</a>
+          <span class="sep">›</span>
+          <span>Proyectos Realizados</span>
+        </nav>
+        <span class="subhero__label">Portafolio</span>
+        <h1 class="subhero__title">
+          Proyectos<br />
+          <span class="gradient-text">Realizados</span>
+        </h1>
+        <p class="subhero__sub">
+          Una selección de proyectos de inspección, certificación y seguridad industrial ejecutados en empresas líderes de la Patagonia argentina.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -68,52 +84,89 @@
     <div class="container">
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;">
         <div class="reveal">
-          <div style="font-size:2.2rem;font-weight:900;letter-spacing:-0.04em;"><span data-target="500">0</span><span style="color:var(--brand-teal);font-size:1.6rem;">+</span></div>
-          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:6px;">Proyectos totales</div>
+          <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;line-height:1;color:var(--text);">
+            <span data-target="500">0</span><span style="color:var(--brand-teal);font-size:1.4rem;">+</span>
+          </div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:6px;">Proyectos Totales</div>
         </div>
         <div class="reveal">
-          <div style="font-size:2.2rem;font-weight:900;letter-spacing:-0.04em;"><span data-target="50">0</span><span style="color:var(--brand-teal);font-size:1.6rem;">+</span></div>
-          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:6px;">Clientes activos</div>
+          <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;line-height:1;color:var(--text);">
+            <span data-target="50">0</span><span style="color:var(--brand-teal);font-size:1.4rem;">+</span>
+          </div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:6px;">Clientes Activos</div>
         </div>
         <div class="reveal">
-          <div style="font-size:2.2rem;font-weight:900;letter-spacing:-0.04em;"><span data-target="8">0</span></div>
-          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:6px;">Provincias cubiertas</div>
+          <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;line-height:1;color:var(--text);">
+            <span data-target="8">0</span>
+          </div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:6px;">Provincias Cubiertas</div>
         </div>
         <div class="reveal">
-          <div style="font-size:2.2rem;font-weight:900;letter-spacing:-0.04em;"><span data-target="100">0</span><span style="color:var(--brand-teal);font-size:1.6rem;">%</span></div>
-          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:6px;">Trazabilidad documental</div>
+          <div style="font-size:2rem;font-weight:900;letter-spacing:-0.04em;line-height:1;color:var(--text);">
+            <span data-target="100">0</span><span style="color:var(--brand-teal);font-size:1.4rem;">%</span>
+          </div>
+          <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-3);margin-top:6px;">Trazabilidad Documental</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== PROJECTS GRID ===== -->
-  <section class="section" style="padding:80px 0;">
+  <!-- ===== DESTACADOS BANNER ===== -->
+  <section style="padding:80px 0 0;">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-label">Destacados</span>
+        <span class="section-label">Portafolio</span>
         <h2 class="section-title">Algunos de Nuestros Proyectos</h2>
         <p class="section-subtitle">Proyectos seleccionados de los últimos años en distintas industrias y regiones de la Patagonia.</p>
       </div>
+    </div>
+  </section>
 
-      <div class="projects-grid">
-
-        <div class="project-card reveal">
-          <div class="project-card__header">
-            <div>
-              <div class="project-card__client">YPF S.A.</div>
-              <div class="project-card__title">Inspección integral de equipos de izaje — Cuenca GSJ</div>
+  <!-- ===== FEATURED PROJECT ===== -->
+  <section style="padding:0 0 48px;">
+    <div class="container">
+      <div class="reveal" style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;">
+        <div class="grid-2" style="gap:0;">
+          <div class="img-feature" style="aspect-ratio:auto;min-height:280px;border-radius:0;">
+            <img
+              src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?auto=format&fit=crop&w=800&q=75"
+              alt="Inspección de equipos de izaje YPF"
+            />
+            <div class="img-feature__overlay"></div>
+          </div>
+          <div style="padding:40px;">
+            <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand-teal);margin-bottom:12px;">
+              <span style="width:20px;height:1px;background:var(--brand-teal);display:inline-block;"></span>
+              Proyecto Destacado · 2023
+            </span>
+            <h3 style="font-size:1.4rem;font-weight:800;line-height:1.2;margin-bottom:12px;color:var(--text);">Inspección Integral de Equipos de Izaje — YPF S.A.</h3>
+            <p style="font-size:0.9rem;color:var(--text-2);line-height:1.7;margin-bottom:20px;">
+              Inspección y certificación de 48 equipos de izaje (grúas autopropulsadas, malacates y tecles) en las instalaciones de YPF en la Cuenca del Golfo San Jorge. Se emitieron certificados con informe técnico y plan de mantenimiento preventivo.
+            </p>
+            <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;">
+              <span class="pill pill--blue">Izaje</span>
+              <span class="pill pill--teal">ASME B30</span>
             </div>
-            <div class="project-card__year">2023</div>
-          </div>
-          <div class="project-card__desc">
-            Inspección y certificación de 48 equipos de izaje (grúas autopropulsadas, malacates y tecles) en las instalaciones de YPF en la Cuenca del Golfo San Jorge. Se emitieron los certificados correspondientes con informe técnico y plan de mantenimiento preventivo.
-          </div>
-          <div class="project-card__tags">
-            <span class="pill pill--blue">Izaje</span>
-            <span class="pill pill--teal">ASME B30</span>
+            <div style="display:flex;gap:24px;padding-top:20px;border-top:1px solid var(--border);">
+              <div>
+                <div style="font-size:1.4rem;font-weight:900;color:var(--text);">48</div>
+                <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);">Equipos certificados</div>
+              </div>
+              <div>
+                <div style="font-size:1.4rem;font-weight:900;color:var(--text);">100%</div>
+                <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-3);">Trazabilidad documental</div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECT GRID ===== -->
+  <section style="padding:0 0 80px;">
+    <div class="container">
+      <div class="projects-grid">
 
         <div class="project-card reveal">
           <div class="project-card__header">
@@ -124,7 +177,7 @@
             <div class="project-card__year">2023</div>
           </div>
           <div class="project-card__desc">
-            Certificación de 22 recipientes a presión y separadores gas-líquido en la planta de tratamiento de gas de Fortín de Piedra (Neuquén). Inclusión de ultrasonido para medición de espesores e identificación de sectores con corrosión avanzada.
+            Certificación de 22 recipientes a presión y separadores en la planta de Fortín de Piedra (Neuquén). Ultrasonido para medición de espesores e identificación de sectores con corrosión avanzada.
           </div>
           <div class="project-card__tags">
             <span class="pill pill--orange">Presión</span>
@@ -142,7 +195,7 @@
             <div class="project-card__year">2022</div>
           </div>
           <div class="project-card__desc">
-            Elaboración e implementación del programa anual de Higiene y Seguridad Laboral para las operaciones de PAE en Chubut, incluyendo evaluación de riesgos, planillas de seguimiento, capacitaciones y simulacros de evacuación conforme Ley 19.587.
+            Elaboración e implementación del programa anual de H&amp;S para las operaciones de PAE en Chubut: evaluación de riesgos, capacitaciones, planillas de seguimiento y simulacros conforme Ley 19.587.
           </div>
           <div class="project-card__tags">
             <span class="pill pill--teal">Higiene Laboral</span>
@@ -154,12 +207,12 @@
           <div class="project-card__header">
             <div>
               <div class="project-card__client">AES Argentina</div>
-              <div class="project-card__title">Plan de izaje para aerogeneradores — Parque Vientos de Huentala</div>
+              <div class="project-card__title">Plan de izaje — Parque Eólico Vientos de Huentala</div>
             </div>
             <div class="project-card__year">2022</div>
           </div>
           <div class="project-card__desc">
-            Elaboración y supervisión del plan de izaje para el montaje de 14 aerogeneradores de 3 MW en el parque eólico Vientos de Huentala, Mendoza. Coordinación de grúas de gran porte, análisis de cargas y condiciones de viento durante la operación.
+            Elaboración y supervisión del plan de izaje para el montaje de 14 aerogeneradores de 3 MW. Coordinación de grúas de gran porte, análisis de cargas y condiciones de viento durante la operación.
           </div>
           <div class="project-card__tags">
             <span class="pill pill--blue">Izaje</span>
@@ -176,7 +229,7 @@
             <div class="project-card__year">2023</div>
           </div>
           <div class="project-card__desc">
-            Auditoría técnica de 8 calderas pirotubulares y 35 recipientes a presión en instalaciones de la Cuenca Austral (Santa Cruz). Se detectaron y documentaron 12 no conformidades, todas corregidas en el plan de acción posterior.
+            Auditoría técnica de 8 calderas pirotubulares y 35 recipientes a presión en instalaciones de la Cuenca Austral (Santa Cruz). Se detectaron 12 no conformidades, todas corregidas en el plan de acción posterior.
           </div>
           <div class="project-card__tags">
             <span class="pill pill--orange">Presión</span>
@@ -189,12 +242,12 @@
           <div class="project-card__header">
             <div>
               <div class="project-card__client">Shell Argentina</div>
-              <div class="project-card__title">Auditoría de cumplimiento Ley 19.587 — Comodoro Rivadavia</div>
+              <div class="project-card__title">Auditoría de cumplimiento Ley 19.587</div>
             </div>
             <div class="project-card__year">2022</div>
           </div>
           <div class="project-card__desc">
-            Auditoría de cumplimiento normativo en materia de higiene y seguridad laboral para las operaciones de Shell en Comodoro Rivadavia. Revisión de 120 ítems del programa de seguridad, con informe de brechas y recomendaciones de mejora.
+            Auditoría de cumplimiento normativo en H&amp;S para las operaciones de Shell en Comodoro Rivadavia. Revisión de 120 ítems del programa de seguridad, con informe de brechas y recomendaciones de mejora.
           </div>
           <div class="project-card__tags">
             <span class="pill pill--teal">Higiene Laboral</span>
@@ -206,12 +259,12 @@
           <div class="project-card__header">
             <div>
               <div class="project-card__client">Capex S.A.</div>
-              <div class="project-card__title">Inspección de grúas y equipos de izaje — Plataforma Tapera</div>
+              <div class="project-card__title">Inspección de grúas — Plataforma Tapera</div>
             </div>
             <div class="project-card__year">2022</div>
           </div>
           <div class="project-card__desc">
-            Inspección y recertificación de 6 grúas industriales y 14 equipos de izaje menores en la plataforma Tapera de Capex. Ensayo de carga al 125% de la capacidad nominal, revisión estructural y emisión de certificados de habilitación con vigencia anual.
+            Inspección y recertificación de 6 grúas industriales y 14 equipos de izaje menores. Ensayo de carga al 125% de la capacidad nominal y emisión de certificados con vigencia anual.
           </div>
           <div class="project-card__tags">
             <span class="pill pill--blue">Izaje</span>
@@ -223,12 +276,12 @@
           <div class="project-card__header">
             <div>
               <div class="project-card__client">CGC — Cía. Gral. de Combustibles</div>
-              <div class="project-card__title">Plan de emergencias y evacuación — Gobernador Moyano</div>
+              <div class="project-card__title">Plan de emergencias y evacuación — Gob. Moyano</div>
             </div>
             <div class="project-card__year">2023</div>
           </div>
           <div class="project-card__desc">
-            Elaboración del plan de emergencias y evacuación para las instalaciones de CGC en Gobernador Moyano (Chubut), con diseño de rutas de evacuación, capacitación al personal (180 personas) y simulacro evaluado conforme protocolo SRT.
+            Elaboración del plan de emergencias y evacuación para CGC en Gobernador Moyano. Diseño de rutas, capacitación a 180 personas y simulacro evaluado conforme protocolo SRT.
           </div>
           <div class="project-card__tags">
             <span class="pill pill--teal">Higiene Laboral</span>
@@ -240,12 +293,12 @@
           <div class="project-card__header">
             <div>
               <div class="project-card__client">Pampa Energía</div>
-              <div class="project-card__title">Inspección de equipos de izaje — Planta Compresor Palmar Largo</div>
+              <div class="project-card__title">Equipos de izaje — Planta Compresor Palmar Largo</div>
             </div>
             <div class="project-card__year">2022</div>
           </div>
           <div class="project-card__desc">
-            Inspección anual reglamentaria de 9 equipos de izaje en la planta compresora Palmar Largo (Formosa). Revisión estructural, ensayo de frenos, verificación de cables y cadenas, y emisión de plan de mantenimiento semestral.
+            Inspección anual reglamentaria de 9 equipos de izaje en la planta compresora Palmar Largo (Formosa). Revisión estructural, ensayo de frenos y plan de mantenimiento semestral.
           </div>
           <div class="project-card__tags">
             <span class="pill pill--blue">Izaje</span>
@@ -257,12 +310,12 @@
           <div class="project-card__header">
             <div>
               <div class="project-card__client">TotalEnergies Argentina</div>
-              <div class="project-card__title">Certificación ASME aparatos a presión — Cuenca Austral</div>
+              <div class="project-card__title">Certificación ASME — Cuenca Austral offshore</div>
             </div>
             <div class="project-card__year">2021</div>
           </div>
           <div class="project-card__desc">
-            Certificación de 18 aparatos a presión (separadores, scrubbers e intercambiadores) en las operaciones offshore de TotalEnergies en la Cuenca Austral. Inspección realizada con equipamiento de ultrasonido phased array para detección de fisuras internas.
+            Certificación de 18 aparatos a presión (separadores, scrubbers e intercambiadores) en operaciones offshore. Inspección con ultrasonido phased array para detección de fisuras internas.
           </div>
           <div class="project-card__tags">
             <span class="pill pill--orange">Presión</span>
@@ -275,18 +328,24 @@
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
-  <section style="padding:72px 0;background:var(--bg-2);border-top:1px solid var(--border);">
-    <div class="container" style="text-align:center;">
-      <div class="reveal">
-        <span class="section-label">Próximo proyecto</span>
-        <h2 class="section-title" style="margin-bottom:16px;">¿Agregamos el suyo?</h2>
-        <p style="font-size:1rem;color:var(--text-2);max-width:480px;margin:0 auto 32px;line-height:1.7;">
-          Contáctenos y evaluamos juntos las necesidades de su planta. Primera consulta sin cargo.
-        </p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-          <a href="./index.html#contacto" class="btn btn--primary btn--lg">Solicitar Inspección</a>
-          <a href="./nosotros.html" class="btn btn--ghost btn--lg">Conocer el equipo →</a>
+  <!-- ===== CTA BANNER ===== -->
+  <section style="padding:0 0 80px;">
+    <div class="container">
+      <div class="reveal" style="position:relative;border-radius:var(--radius);overflow:hidden;min-height:240px;display:flex;align-items:center;">
+        <img
+          src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=75"
+          alt="Planta industrial"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(0.22) saturate(0.6);"
+        />
+        <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(7,9,15,0.97) 40%, rgba(7,9,15,0.65) 100%);"></div>
+        <div style="position:relative;z-index:2;padding:48px;">
+          <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--brand-teal);margin-bottom:10px;">Próximo proyecto</p>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;color:#eef0f8;margin-bottom:12px;line-height:1.2;">¿Agregamos el suyo?</h2>
+          <p style="font-size:0.9rem;color:rgba(255,255,255,0.5);max-width:420px;line-height:1.7;margin-bottom:28px;">Contáctenos y evaluamos juntos las necesidades de su planta. Primera consulta sin cargo.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="./index.html#contacto" class="btn btn--primary btn--lg">Solicitar Inspección</a>
+            <a href="./nosotros.html" class="btn btn--white btn--lg">Conocer el equipo</a>
+          </div>
         </div>
       </div>
     </div>
