@@ -2,6 +2,29 @@
    GV INGENIEROS — script.js v2
    ============================================================ */
 
+/* ---- SPLASH SCREEN ---- */
+(function () {
+  const splash = document.getElementById('splash');
+  if (!splash) return;
+
+  // Prevent background scroll while splash is visible
+  document.body.style.overflow = 'hidden';
+
+  // Dismiss after 2.6s → fade out over 0.9s → remove
+  setTimeout(() => {
+    splash.classList.add('out');
+    document.body.style.overflow = '';
+    setTimeout(() => splash.remove(), 950);
+  }, 2600);
+
+  // Also allow skipping on tap/click
+  splash.addEventListener('click', () => {
+    splash.classList.add('out');
+    document.body.style.overflow = '';
+    setTimeout(() => splash.remove(), 950);
+  }, { once: true });
+})();
+
 /* ---- Header scroll state ---- */
 const header = document.getElementById('header');
 const waBtn   = document.getElementById('waBtn');
