@@ -100,6 +100,7 @@ ul { list-style: none; }
 .pill--orange { background: rgba(249,115,22,.15); color: #fb923c; border: 1px solid rgba(249,115,22,.3); }
 
 .section-label {
+  display: block;           /* siempre ocupa línea propia */
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -117,7 +118,7 @@ ul { list-style: none; }
   margin-top: 16px;
   font-size: 1.05rem;
   color: var(--text-2);
-  max-width: 580px;
+  max-width: min(600px, 100%); /* 600px unificado, sin overflow en mobile */
   line-height: 1.7;
 }
 .section-header { text-align: center; margin-bottom: 56px; }
@@ -380,7 +381,7 @@ ul { list-style: none; }
 .hero__subtitle {
   font-size: clamp(1rem, 1.8vw, 1.15rem);
   color: var(--text-2);
-  max-width: 540px;
+  max-width: min(600px, 100%); /* alineado con .section-subtitle */
   line-height: 1.72;
   margin-bottom: 16px;
 }
@@ -700,10 +701,10 @@ ul { list-style: none; }
 
 /* Section body */
 .svc-section__body {
-  padding: 60px 0 80px;
+  padding: 56px 0 72px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 0; /* gaps manejados por svc-group + svc-group border */
 }
 
 /* ASME note */
@@ -712,6 +713,7 @@ ul { list-style: none; }
   align-items: flex-start;
   gap: 16px;
   padding: 20px 24px;
+  margin-bottom: 40px; /* espacio antes del primer svc-group */
   background: rgba(26,86,219,0.08);
   border: 1px solid rgba(26,86,219,0.2);
   border-radius: var(--radius);
@@ -722,8 +724,18 @@ ul { list-style: none; }
 .asme-note svg { flex-shrink: 0; color: var(--brand-teal); margin-top: 2px; }
 .asme-note strong { color: var(--text); }
 
-/* Service group */
-.svc-group { display: flex; flex-direction: column; gap: 20px; }
+/* Service group — separador visual entre grupos */
+.svc-group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 40px;
+}
+.svc-group:last-child { padding-bottom: 0; }
+.svc-group + .svc-group {
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
 .svc-group__header {
   display: flex;
   align-items: center;
@@ -803,7 +815,7 @@ ul { list-style: none; }
 .trace__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: clamp(40px, 6vw, 80px); /* gap elástico, no tan agresivo en laptop */
   align-items: center;
 }
 .trace__lead {
@@ -1246,6 +1258,9 @@ ul { list-style: none; }
 @media (max-width: 1100px) {
   .bento { grid-template-columns: 1fr 1fr; }
   .training__grid { grid-template-columns: repeat(2, 1fr); }
+  .trace__inner { gap: 48px; } /* refuerzo a clamp en pantallas medianas */
+  .footer__inner { grid-template-columns: 1fr 1fr 1fr; }
+  .footer__brand { grid-column: 1 / -1; }
 }
 
 @media (max-width: 900px) {
@@ -1320,7 +1335,23 @@ ul { list-style: none; }
   .art-banner__inner { flex-direction: column; text-align: center; }
   .norm-strip__inner { flex-direction: column; align-items: flex-start; gap: 14px; }
   .norm-strip__label { border-right: none; padding-right: 0; }
+  .norm-strip__logos { justify-content: flex-start; }
   .svc-section__banner { height: 240px; }
+
+  /* Banners de servicio: centrar texto en mobile */
+  .svc-section__banner-content { text-align: center; }
+
+  /* Footer: centrar columnas en mobile */
+  .footer__col { text-align: center; }
+  .footer__col ul { align-items: center; }
+  .footer__col--contact { text-align: center; }
+  .footer__col--contact span { justify-content: center; }
+  .footer__brand { text-align: center; }
+  .footer__brand .logo { justify-content: center; }
+  .footer__norms { justify-content: center; }
+
+  /* Ocultar <br> del hero title en mobile para que fluya naturalmente */
+  .hero__title br { display: none; }
 }
 
 @media (max-width: 480px) {
