@@ -59,9 +59,17 @@
 }
 
 /* Elements with hardcoded dark RGBA — override in light mode */
+
+/* Header: always has a light background in light mode (top + scrolled) */
+[data-theme="light"] .header {
+  background: rgba(244,246,252,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.07);
+}
 [data-theme="light"] .header.scrolled {
-  background: rgba(244,246,252,0.94);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.08);
+  background: rgba(244,246,252,0.98);
+  box-shadow: 0 1px 16px rgba(0,0,0,0.10);
 }
 [data-theme="light"] .logo__sep { background: rgba(0,0,0,0.15); }
 [data-theme="light"] .nav__link:hover,
@@ -71,8 +79,19 @@
   background: rgba(244,246,252,0.98) !important;
   border-bottom-color: rgba(0,0,0,0.08);
 }
+
+/* Hero & section banners sit on dark images — keep text always white */
+[data-theme="light"] .hero {
+  --text:   #eef0f8;
+  --text-2: #b0b8cc;
+  --text-3: #6a7080;
+}
+[data-theme="light"] .svc-section__banner-content {
+  --text:   #eef0f8;
+  --text-2: #b0b8cc;
+}
 /* Hero overlay: keep dark enough for text readability */
-[data-theme="light"] .hero__overlay { opacity: 0.6; }
+[data-theme="light"] .hero__overlay { opacity: 0.62; }
 /* svc-items: flip the rgba white tints to rgba black */
 [data-theme="light"] .svc-item {
   background: rgba(0,0,0,0.025);
