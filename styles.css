@@ -717,18 +717,19 @@ ul { list-style: none; }
   box-shadow: var(--shadow);
 }
 
-/* Icon area: confined to top portion only — does NOT overlap content panel */
+/* Icon area: full card, but z-index:1 creates its own stacking context.
+   All children (::before, ::after, SVG) live INSIDE that context (max z:3).
+   Content panel at z-index:2 slides over and covers icon+glow+image. */
 .bento__card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 128px;        /* stops before the content panel */
-  height: auto;
-  overflow: hidden;     /* clip bg-image + glow inside this zone */
+  inset: 0;
+  height: 100%;
+  padding-bottom: 100px;   /* center SVG in the visible area above content panel */
+  z-index: 1;              /* ← stacking context; content panel (z:2) will cover it */
+  overflow: hidden;
   transition: background var(--t);
 }
 /* Background image: blurred and very dim — pure ambiance */
@@ -776,7 +777,7 @@ ul { list-style: none; }
   height: 220px;
   border-radius: 50%;
   z-index: 2;
-  top: 50%;
+  top: 36%;              /* ~SVG center accounting for padding-bottom:100px */
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -804,11 +805,13 @@ ul { list-style: none; }
 .bento__card:hover .bento__card-icon--teal   svg { filter: drop-shadow(0 0 22px rgba(56,189,248,0.85))  drop-shadow(0 0 8px rgba(56,189,248,0.40)); }
 .bento__card:hover .bento__card-icon--orange svg { filter: drop-shadow(0 0 22px rgba(251,146,60,0.85))  drop-shadow(0 0 8px rgba(251,146,60,0.40)); }
 
-/* Content panel anchored at bottom, slides up on hover */
+/* Content panel anchored at bottom, slides up on hover.
+   z-index:2 > icon div z-index:1 → covers image/icon/glow as it expands */
 .bento__card-content {
   position: absolute;
   bottom: 0;
   left: 0;
+  z-index: 2;
   right: 0;
   background: var(--bg-card);
   border-top: 1px solid var(--border);
@@ -1638,7 +1641,7 @@ ul { list-style: none; }
 
   /* ---- Bento cards: en mobile vuelven a layout normal (sin slide) ---- */
   .bento__card { min-height: auto; display: flex; flex-direction: column; }
-  .bento__card-icon { position: static; height: 190px; bottom: auto; overflow: hidden; border-bottom: 1px solid var(--border); }
+  .bento__card-icon { position: static; height: 190px; padding-bottom: 0; z-index: auto; overflow: hidden; border-bottom: 1px solid var(--border); }
   .bento__card-content { position: static; border-top: none; padding: 20px 20px 22px; text-align: center; align-items: center; }
   .bento__card-extra { grid-template-rows: 1fr; opacity: 1; margin-top: 10px; }
   .bento__card-hint { display: none; }
