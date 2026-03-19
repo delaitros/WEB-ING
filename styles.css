@@ -565,11 +565,10 @@ ul { list-style: none; }
 }
 
 .hero__stats {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(160px, 200px));
+  gap: 16px;
   justify-content: center;
-  gap: 28px;
-  flex-wrap: wrap;
 }
 .stat { display: flex; flex-direction: column; }
 
@@ -605,8 +604,7 @@ ul { list-style: none; }
   margin-top: 4px;
 }
 .stat__divider {
-  width: 1px; height: 40px;
-  background: var(--border);
+  display: none;
 }
 
 .hero__scroll-cue {
@@ -1585,7 +1583,7 @@ ul { list-style: none; }
   .hero__title { font-size: 2.4rem; }
   .hero__actions { flex-direction: column; }
   .hero__actions .btn { width: 100%; }
-  .hero__stats { flex-direction: column; align-items: center; gap: 16px; }
+  .hero__stats { grid-template-columns: 1fr; max-width: 280px; margin-inline: auto; }
   .stat__divider { display: none; }
   .training__grid { grid-template-columns: 1fr; }
   .svc-section__banner { height: 200px; }
