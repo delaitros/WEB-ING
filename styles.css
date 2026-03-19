@@ -2720,6 +2720,12 @@ ul { list-style: none; }
   height: auto;
 }
 
+.bp-svg-full {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .bp-card-lbl {
   font-family: var(--font-mono);
   font-size: 0.72rem;
