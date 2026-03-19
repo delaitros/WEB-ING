@@ -187,7 +187,7 @@ if (_contactForm) _contactForm.addEventListener('submit', e => {
     (mensaje ? `\n\nMensaje: ${mensaje}` : '') +
     `\n\nQuedo a disposición. Saludos.`
   );
-  window.open(`https://wa.me/5492804551369?text=${text}`, '_blank', 'noopener,noreferrer');
+  window.open(`https://wa.me/5492804581369?text=${text}`, '_blank', 'noopener,noreferrer');
 });
 
 /* ---- Smooth image fade-in on load ---- */
@@ -200,4 +200,19 @@ document.querySelectorAll('img').forEach(img => {
     img.addEventListener('load', () => { img.style.opacity = '1'; });
     img.addEventListener('error', () => { img.style.opacity = '1'; }); // show fallback
   }
+});
+
+/* ---- Bento cards: touch/click toggle for devices without hover ---- */
+document.addEventListener('DOMContentLoaded', () => {
+  const isTouchOnly = () => window.matchMedia('(hover: none)').matches;
+  document.querySelectorAll('.bento__card').forEach(card => {
+    card.addEventListener('click', e => {
+      if (!isTouchOnly()) return;          // desktop hover handles it
+      if (e.target.closest('.card-link')) return; // let link navigate
+      const isOpen = card.classList.contains('is-open');
+      document.querySelectorAll('.bento__card.is-open')
+        .forEach(c => c.classList.remove('is-open'));
+      if (!isOpen) card.classList.add('is-open');
+    });
+  });
 });

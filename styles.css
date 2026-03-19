@@ -709,8 +709,7 @@ ul { list-style: none; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: border-color var(--t), transform var(--t), box-shadow var(--t);
-  display: flex;
-  flex-direction: column;
+  min-height: 340px; /* space for full-height icon bg */
 }
 .bento__card:hover {
   border-color: var(--border-h);
@@ -718,13 +717,16 @@ ul { list-style: none; }
   box-shadow: var(--shadow);
 }
 
-/* icon area replacing photo */
+/* Icon fills the full card as background */
 .bento__card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 190px;
-  border-bottom: 1px solid var(--border);
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  /* shift SVG up so it sits in the visible area above the content panel */
+  padding-bottom: 120px;
   transition: background var(--t);
 }
 .bento__card-icon--blue   { background: linear-gradient(145deg, rgba(26,86,219,0.18) 0%, rgba(26,86,219,0.04) 100%); }
@@ -737,16 +739,22 @@ ul { list-style: none; }
   width: 100px;
   height: 100px;
   stroke-width: 1.5;
-  transition: transform 0.4s ease;
+  transition: transform 0.45s ease;
 }
-.bento__card:hover .bento__card-icon svg { transform: scale(1.08); }
+.bento__card:hover .bento__card-icon svg { transform: scale(1.06) translateY(-6px); }
 .bento__card-icon--blue   svg { color: #60a5fa; }
 .bento__card-icon--teal   svg { color: #38bdf8; }
 .bento__card-icon--orange svg { color: #fb923c; }
 
+/* Content panel anchored at bottom, slides up on hover */
 .bento__card-content {
-  padding: 26px 28px 28px;
-  flex: 1;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 18px 24px 22px;
   display: flex;
   flex-direction: column;
 }
@@ -754,14 +762,53 @@ ul { list-style: none; }
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text);
-  margin: 10px 0 10px;
+  margin: 10px 0 0;
   letter-spacing: -0.02em;
 }
+
+/* Extra content (description + link): smooth slide reveal */
+.bento__card-extra {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.42s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.32s ease,
+    margin-top 0.38s ease;
+  margin-top: 0;
+}
+.bento__card-extra > div { overflow: hidden; }
 .bento__card-content p {
   font-size: 0.875rem;
   color: var(--text-2);
   line-height: 1.65;
-  margin-bottom: 16px;
+  margin: 14px 0 12px;
+}
+
+.bento__card:hover .bento__card-extra,
+.bento__card.is-open .bento__card-extra {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+/* Subtle chevron hint below title */
+.bento__card-hint {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) scale(0.7);
+  color: var(--text-3);
+  margin-top: 10px;
+  align-self: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.bento__card:hover .bento__card-hint,
+.bento__card.is-open .bento__card-hint {
+  opacity: 0;
+  transform: rotate(45deg) scale(0.3);
 }
 
 .feat-list {
@@ -1531,8 +1578,12 @@ ul { list-style: none; }
   .stat { align-items: center; text-align: center; }
   .stat__label { text-align: center; }
 
-  /* ---- Bento cards: centrar contenido en mobile ---- */
-  .bento__card-content { text-align: center; align-items: center; }
+  /* ---- Bento cards: en mobile vuelven a layout normal (sin slide) ---- */
+  .bento__card { min-height: auto; display: flex; flex-direction: column; }
+  .bento__card-icon { position: static; height: 190px; padding-bottom: 0; border-bottom: 1px solid var(--border); }
+  .bento__card-content { position: static; border-top: none; padding: 20px 20px 22px; text-align: center; align-items: center; }
+  .bento__card-extra { grid-template-rows: 1fr; opacity: 1; margin-top: 10px; }
+  .bento__card-hint { display: none; }
   /* feat-list centrado: items como flex row centrado */
   .feat-list { align-items: center; width: 100%; }
   .feat-list li {
@@ -1607,7 +1658,7 @@ ul { list-style: none; }
   /* Cards padding reducido en pantallas muy chicas */
   .contact__card { padding: 24px 20px; }
   .contact__form-wrap { padding: 24px 20px; }
-  .bento__card-content { padding: 20px 20px 22px; }
+  /* padding ya fijado arriba en la regla mobile de bento */
 }
 
 /* ============================================================
