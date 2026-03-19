@@ -240,6 +240,30 @@ document.querySelectorAll('img').forEach(img => {
   update();
 })();
 
+/* ---- Blueprint: activar dibujo al hacer scroll ---- */
+(function () {
+  const stage = document.getElementById('bpStage');
+  if (!stage) return;
+  const obs = new IntersectionObserver(([e]) => {
+    if (!e.isIntersecting) return;
+    stage.classList.add('bp-active');
+    obs.disconnect();
+  }, { threshold: 0.15 });
+  obs.observe(stage);
+})();
+
+/* ---- Gauges: animar aguja y arco al hacer scroll ---- */
+(function () {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('active');
+      obs.unobserve(e.target);
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.gauge').forEach(g => obs.observe(g));
+})();
+
 /* ---- Bento cards: touch/click toggle for devices without hover ---- */
 document.addEventListener('DOMContentLoaded', () => {
   const isTouchOnly = () => window.matchMedia('(hover: none)').matches;
