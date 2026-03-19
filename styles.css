@@ -73,7 +73,7 @@
 [data-theme="light"] .header.scrolled .nav__link--active { color: var(--text); background: rgba(0,0,0,0.06); }
 [data-theme="light"] .header.scrolled .nav__dropdown-btn { color: var(--text); }
 [data-theme="light"] .header.scrolled .nav__dropdown-btn:hover { color: var(--text); background: rgba(0,0,0,0.06); }
-[data-theme="light"] .header.scrolled .logo__ingenieros { color: var(--text-2); }
+[data-theme="light"] .header.scrolled .logo__ingenieros { color: var(--text); }
 [data-theme="light"] .header.scrolled .logo__sep { background: rgba(0,0,0,0.12); }
 [data-theme="light"] .header.scrolled .theme-toggle { color: var(--text-2); border-color: rgba(0,0,0,0.1); }
 [data-theme="light"] .header.scrolled .theme-toggle:hover { background: rgba(0,0,0,0.05); }
@@ -92,8 +92,10 @@
 }
 [data-theme="light"] .header:not(.scrolled) .theme-toggle:hover { background: rgba(255,255,255,0.07); }
 
-/* INGENIEROS: medium grey in light mode (not near-black) */
-[data-theme="light"] .logo__ingenieros { color: var(--text-2); }
+/* INGENIEROS: same dark color as nav links in scrolled light mode */
+[data-theme="light"] .logo__ingenieros { color: var(--text); }
+/* At top (not scrolled) in light mode: keep white to match nav white text */
+[data-theme="light"] .header:not(.scrolled) .logo__ingenieros { color: rgba(238,240,248,0.85); }
 
 /* Dropdown active button: remove background box, use color only */
 [data-theme="light"] .nav__dropdown-btn.nav__link--active { background: none !important; color: var(--brand-blue); }
@@ -424,6 +426,7 @@ ul { list-style: none; }
   min-height: 100svh;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding-top: var(--header-h);
   overflow: hidden;
   background: var(--bg);
@@ -1807,14 +1810,19 @@ ul { list-style: none; }
   background: rgba(13,17,23,0.13);
   box-shadow: 0 4px 20px rgba(0,0,0,0.10);
 }
-/* Hero ghost button: hero is always dark — keep white glass */
+/* Hero ghost button: hero is always dark — dark glass so bokeh doesn't tint it */
+.hero .btn--ghost,
 [data-theme="light"] .hero .btn--ghost {
-  background: rgba(255,255,255,0.10);
-  color: #eef0f8;
-  box-shadow: none;
+  background: rgba(14,18,28,0.52);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  color: rgba(238,240,248,0.92);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.28);
 }
+.hero .btn--ghost:hover,
 [data-theme="light"] .hero .btn--ghost:hover {
-  background: rgba(255,255,255,0.18);
+  background: rgba(14,18,28,0.68);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.36);
 }
 
 /* Cards: glass in dark mode */
@@ -1863,20 +1871,21 @@ ul { list-style: none; }
   box-shadow: 0 12px 48px rgba(37,211,102,0.5);
 }
 
-/* Section stats: glass chip */
+/* Section stats: glass chip — dark glass so bokeh doesn't tint it */
 .stat {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(14,18,28,0.52);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
   border: none;
   border-radius: var(--radius-sm);
   padding: 16px 20px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.28);
 }
 [data-theme="light"] .stat {
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(12px) saturate(1.4);
-  -webkit-backdrop-filter: blur(12px) saturate(1.4);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  background: rgba(255,255,255,0.60);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
 }
 
 /* ============================================================
