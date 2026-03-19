@@ -2832,27 +2832,29 @@ ul { list-style: none; }
 }
 .gauge__arcs { display: block; width: 100%; height: auto; }
 
-/* Arc track (gray background) */
+/* Arc track (gray background) — butt caps para evitar blobs en los extremos */
 .gauge__track {
   fill: none;
   stroke: var(--bg-3);
-  stroke-width: 11;
-  stroke-linecap: round;
+  stroke-width: 13;
+  stroke-linecap: butt;
 }
-[data-theme="light"] .gauge__track { stroke: #d4ddf5; }
+[data-theme="light"] .gauge__track { stroke: #d0d8f0; }
 
-/* Arc value (colored, animated via dashoffset) */
+/* Arc value (colored, animado via stroke-dashoffset con longitud real).
+   Semicírculo radio 90 → longitud = π×90 ≈ 283px.
+   Cada gauge tiene --arc-offset pre-calculado: 283×(1-fill).        */
 .gauge__arc {
   fill: none;
   stroke: var(--gauge-col, var(--brand-blue));
-  stroke-width: 11;
+  stroke-width: 13;
   stroke-linecap: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  filter: drop-shadow(0 0 5px var(--gauge-col, var(--brand-blue)));
-  transition: stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;           /* empieza oculto */
+  filter: drop-shadow(0 0 6px var(--gauge-col, var(--brand-blue)));
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
 }
-.gauge.active .gauge__arc { stroke-dashoffset: calc(1 - var(--gauge-fill, 0.8)); }
+.gauge.active .gauge__arc { stroke-dashoffset: var(--arc-offset, 0); }
 
 /* Tick marks */
 .gauge__tick { stroke: var(--text-3); stroke-width: 2; stroke-linecap: round; }
