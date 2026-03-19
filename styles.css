@@ -60,17 +60,25 @@
 
 /* Elements with hardcoded dark RGBA — override in light mode */
 
-/* ---- Header scrolled (subpages always; landing when y>20): white opaque ---- */
+/* ---- Header scrolled (subpages always; landing when y>20): Liquid Glass white ---- */
 [data-theme="light"] .header.scrolled {
-  background: rgba(244,246,252,0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 16px rgba(0,0,0,0.10);
+  background: rgba(255,255,255,0.52);
+  backdrop-filter: blur(32px) saturate(1.8) brightness(1.02);
+  -webkit-backdrop-filter: blur(32px) saturate(1.8) brightness(1.02);
+  border-bottom: 1px solid rgba(255,255,255,0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    0 8px 32px rgba(0,0,0,0.06);
 }
+/* Dark text on white glass header */
+[data-theme="light"] .header.scrolled .nav__link { color: var(--text-2); }
 [data-theme="light"] .header.scrolled .nav__link:hover,
-[data-theme="light"] .header.scrolled .nav__link--active { background: rgba(0,0,0,0.05); }
-[data-theme="light"] .header.scrolled .logo__sep { background: rgba(0,0,0,0.15); }
-[data-theme="light"] .header.scrolled .theme-toggle { border-color: rgba(0,0,0,0.12); }
+[data-theme="light"] .header.scrolled .nav__link--active { color: var(--text); background: rgba(0,0,0,0.05); }
+[data-theme="light"] .header.scrolled .nav__dropdown-btn { color: var(--text-2); }
+[data-theme="light"] .header.scrolled .nav__dropdown-btn:hover { color: var(--text); background: rgba(0,0,0,0.05); }
+[data-theme="light"] .header.scrolled .logo__ingenieros { color: var(--text-2); }
+[data-theme="light"] .header.scrolled .logo__sep { background: rgba(0,0,0,0.12); }
+[data-theme="light"] .header.scrolled .theme-toggle { color: var(--text-2); border-color: rgba(0,0,0,0.1); }
 [data-theme="light"] .header.scrolled .theme-toggle:hover { background: rgba(0,0,0,0.05); }
 
 /* ---- Header at TOP (landing only, y≤20): transparent — nav stays white over dark hero ---- */
@@ -281,13 +289,10 @@ ul { list-style: none; }
   transform: translateY(-1px);
 }
 .btn--ghost {
-  background: transparent;
   color: var(--text);
-  border: 1px solid var(--border);
 }
 .btn--ghost:hover {
   border-color: var(--border-h);
-  background: rgba(255,255,255,0.05);
 }
 .btn--white {
   background: #fff;
@@ -327,10 +332,13 @@ ul { list-style: none; }
   transition: background var(--t), box-shadow var(--t), backdrop-filter var(--t);
 }
 .header.scrolled {
-  background: rgba(7,9,15,0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 1px 0 var(--border);
+  background: rgba(7, 9, 15, 0.45);
+  backdrop-filter: blur(32px) saturate(1.6) brightness(1.05);
+  -webkit-backdrop-filter: blur(32px) saturate(1.6) brightness(1.05);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.07),
+    0 8px 40px rgba(0,0,0,0.28);
 }
 .header__inner {
   display: flex;
@@ -1727,10 +1735,14 @@ ul { list-style: none; }
   left: 50%;
   transform: translateX(-50%) translateY(-6px);
   min-width: 210px;
-  background: var(--bg-2);
-  border: 1px solid var(--border);
+  background: rgba(13,17,23,0.65);
+  backdrop-filter: blur(32px) saturate(1.6);
+  -webkit-backdrop-filter: blur(32px) saturate(1.6);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.1),
+    0 20px 60px rgba(0,0,0,0.45);
   padding: 6px;
   display: flex;
   flex-direction: column;
@@ -1759,7 +1771,129 @@ ul { list-style: none; }
   color: var(--text);
   background: rgba(255,255,255,0.06);
 }
-[data-theme="light"] .nav__dropdown-menu a:hover { background: rgba(0,0,0,0.05); }
+/* Dropdown light mode: frosted white glass panel */
+[data-theme="light"] .nav__dropdown-menu {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(32px) saturate(1.8);
+  -webkit-backdrop-filter: blur(32px) saturate(1.8);
+  border: 1px solid rgba(255,255,255,0.75);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    0 20px 60px rgba(0,0,0,0.09);
+}
+[data-theme="light"] .nav__dropdown-menu a { color: var(--text-2); }
+[data-theme="light"] .nav__dropdown-menu a:hover { color: var(--text); background: rgba(0,0,0,0.05); }
+
+/* ============================================================
+   LIQUID GLASS — Details throughout the UI
+   ============================================================ */
+
+/* Ghost button: glass backdrop */
+.btn--ghost {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.btn--ghost:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.14);
+}
+[data-theme="light"] .btn--ghost {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(12px) saturate(1.6);
+  -webkit-backdrop-filter: blur(12px) saturate(1.6);
+  border: 1px solid rgba(255,255,255,0.7);
+  color: var(--text);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 2px 8px rgba(0,0,0,0.05);
+}
+[data-theme="light"] .btn--ghost:hover {
+  background: rgba(255,255,255,0.75);
+  border-color: rgba(255,255,255,0.85);
+}
+
+/* Cards: subtle glass inner highlight in dark mode */
+.team-card, .value-card, .project-card, .info-card {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.team-card:hover, .value-card:hover, .project-card:hover {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), var(--shadow);
+}
+
+/* Cards in light mode: frosted glass */
+[data-theme="light"] .team-card,
+[data-theme="light"] .value-card,
+[data-theme="light"] .project-card,
+[data-theme="light"] .info-card {
+  background: rgba(255,255,255,0.68);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  border-color: rgba(255,255,255,0.72);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    0 4px 16px rgba(0,0,0,0.05);
+}
+[data-theme="light"] .team-card:hover,
+[data-theme="light"] .value-card:hover,
+[data-theme="light"] .project-card:hover {
+  background: rgba(255,255,255,0.82);
+  border-color: rgba(26,86,219,0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.95),
+    0 8px 32px rgba(26,86,219,0.08);
+}
+
+/* Pills: glass effect */
+.pill {
+  backdrop-filter: blur(8px) saturate(1.4);
+  -webkit-backdrop-filter: blur(8px) saturate(1.4);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+}
+[data-theme="light"] .pill--blue {
+  background: rgba(26,86,219,0.1);
+  border-color: rgba(26,86,219,0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+[data-theme="light"] .pill--teal {
+  background: rgba(14,165,233,0.1);
+  border-color: rgba(14,165,233,0.22);
+}
+[data-theme="light"] .pill--orange {
+  background: rgba(249,115,22,0.1);
+  border-color: rgba(249,115,22,0.22);
+}
+
+/* WA button: glass tint */
+.wa-btn {
+  box-shadow:
+    0 8px 32px rgba(37,211,102,0.35),
+    inset 0 1px 0 rgba(255,255,255,0.25);
+}
+.wa-btn:hover {
+  box-shadow:
+    0 12px 48px rgba(37,211,102,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Section stats: glass chip */
+.stat {
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+}
+[data-theme="light"] .stat {
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border-color: rgba(255,255,255,0.7);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9);
+}
 
 /* ============================================================
    SUBHERO — dark hero for subpages (always dark, like main hero)
@@ -2078,7 +2212,7 @@ ul { list-style: none; }
   }
   .nav__dropdown.open .nav__dropdown-menu { display: flex; }
   .nav__dropdown-menu a { padding: 11px 16px; font-size: 0.95rem; border-radius: var(--radius-sm); }
-  [data-theme="light"] .nav__dropdown-menu { background: rgba(0,0,0,0.03); }
+  [data-theme="light"] .nav__dropdown-menu { background: rgba(255,255,255,0.08) !important; border-color: rgba(255,255,255,0.12) !important; }
   .page-hero__title { font-size: 2rem; }
   .timeline { padding-left: 32px; }
   .timeline__dot { left: -28px; }
