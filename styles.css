@@ -717,19 +717,21 @@ ul { list-style: none; }
   box-shadow: var(--shadow);
 }
 
-/* Icon fills the full card as background */
+/* Icon area: confined to top portion only — does NOT overlap content panel */
 .bento__card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
-  inset: 0;
-  height: 100%;
-  /* shift SVG up so it sits in the visible area above the content panel */
-  padding-bottom: 120px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 128px;        /* stops before the content panel */
+  height: auto;
+  overflow: hidden;     /* clip bg-image + glow inside this zone */
   transition: background var(--t);
 }
-/* Background images: atenuated, object-fit cover */
+/* Background image: blurred and very dim — pure ambiance */
 .bento__card-bg {
   position: absolute;
   inset: 0;
@@ -737,11 +739,13 @@ ul { list-style: none; }
   height: 100%;
   object-fit: cover;
   object-position: center;
-  opacity: 0.17;
+  opacity: 0.10;
+  filter: blur(4px);
+  transform: scale(1.06); /* avoid visible blur edges */
   z-index: 0;
-  transition: opacity var(--t);
+  transition: opacity var(--t), filter var(--t);
 }
-.bento__card:hover .bento__card-bg { opacity: 0.28; }
+.bento__card:hover .bento__card-bg { opacity: 0.18; filter: blur(3px); }
 
 /* Subtle base tint (fallback when no image loads) */
 .bento__card-icon--blue   { background: rgba(26,86,219,0.07); }
@@ -772,7 +776,7 @@ ul { list-style: none; }
   height: 220px;
   border-radius: 50%;
   z-index: 2;
-  top: 33%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -1634,7 +1638,7 @@ ul { list-style: none; }
 
   /* ---- Bento cards: en mobile vuelven a layout normal (sin slide) ---- */
   .bento__card { min-height: auto; display: flex; flex-direction: column; }
-  .bento__card-icon { position: static; height: 190px; padding-bottom: 0; border-bottom: 1px solid var(--border); }
+  .bento__card-icon { position: static; height: 190px; bottom: auto; overflow: hidden; border-bottom: 1px solid var(--border); }
   .bento__card-content { position: static; border-top: none; padding: 20px 20px 22px; text-align: center; align-items: center; }
   .bento__card-extra { grid-template-rows: 1fr; opacity: 1; margin-top: 10px; }
   .bento__card-hint { display: none; }
