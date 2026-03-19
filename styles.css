@@ -68,11 +68,11 @@
   box-shadow: 0 8px 32px rgba(0,0,0,0.06);
 }
 /* Dark text on white glass header */
-[data-theme="light"] .header.scrolled .nav__link { color: var(--text-2); }
+[data-theme="light"] .header.scrolled .nav__link { color: var(--text); }
 [data-theme="light"] .header.scrolled .nav__link:hover,
-[data-theme="light"] .header.scrolled .nav__link--active { color: var(--text); background: rgba(0,0,0,0.05); }
-[data-theme="light"] .header.scrolled .nav__dropdown-btn { color: var(--text-2); }
-[data-theme="light"] .header.scrolled .nav__dropdown-btn:hover { color: var(--text); background: rgba(0,0,0,0.05); }
+[data-theme="light"] .header.scrolled .nav__link--active { color: var(--text); background: rgba(0,0,0,0.06); }
+[data-theme="light"] .header.scrolled .nav__dropdown-btn { color: var(--text); }
+[data-theme="light"] .header.scrolled .nav__dropdown-btn:hover { color: var(--text); background: rgba(0,0,0,0.06); }
 [data-theme="light"] .header.scrolled .logo__ingenieros { color: var(--text-2); }
 [data-theme="light"] .header.scrolled .logo__sep { background: rgba(0,0,0,0.12); }
 [data-theme="light"] .header.scrolled .theme-toggle { color: var(--text-2); border-color: rgba(0,0,0,0.1); }
@@ -478,12 +478,16 @@ ul { list-style: none; }
   z-index: 3;
   padding-block: 80px;
   max-width: 740px;
+  width: auto;           /* override container width:100% so margin-auto can center */
+  margin-inline: auto;
+  text-align: center;
 }
 
 /* eyebrow */
 .hero__eyebrow {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   margin-bottom: 24px;
   font-size: 0.78rem;
@@ -523,6 +527,7 @@ ul { list-style: none; }
 .hero__norms {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
   margin-bottom: 36px;
 }
@@ -539,6 +544,7 @@ ul { list-style: none; }
 
 .hero__actions {
   display: flex;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 60px;
@@ -547,6 +553,7 @@ ul { list-style: none; }
 .hero__stats {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 28px;
   flex-wrap: wrap;
 }
@@ -1787,17 +1794,27 @@ ul { list-style: none; }
   background: rgba(255,255,255,0.09);
   border: none;
 }
+/* Light mode ghost: clean white pill with dark text (outside hero) */
 [data-theme="light"] .btn--ghost {
-  background: rgba(255,255,255,0.55);
-  backdrop-filter: blur(12px) saturate(1.6);
-  -webkit-backdrop-filter: blur(12px) saturate(1.6);
+  background: rgba(13,17,23,0.08);
+  backdrop-filter: blur(12px) saturate(1.5);
+  -webkit-backdrop-filter: blur(12px) saturate(1.5);
   border: none;
   color: var(--text);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
 }
 [data-theme="light"] .btn--ghost:hover {
-  background: rgba(255,255,255,0.78);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  background: rgba(13,17,23,0.13);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+}
+/* Hero ghost button: hero is always dark — keep white glass */
+[data-theme="light"] .hero .btn--ghost {
+  background: rgba(255,255,255,0.10);
+  color: #eef0f8;
+  box-shadow: none;
+}
+[data-theme="light"] .hero .btn--ghost:hover {
+  background: rgba(255,255,255,0.18);
 }
 
 /* Cards: glass in dark mode */
