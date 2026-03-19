@@ -2841,20 +2841,25 @@ ul { list-style: none; }
 }
 [data-theme="light"] .gauge__track { stroke: #d0d8f0; }
 
-/* Arc value (colored, animado via stroke-dashoffset con longitud real).
-   Semicírculo radio 90 → longitud = π×90 ≈ 283px.
-   Cada gauge tiene --arc-offset pre-calculado: 283×(1-fill).        */
+/* --arc-progress: registered numeric property so CSS can transition it.
+   Semicírculo radio 90 → longitud total = π×90 ≈ 283px.
+   El arco se rellena desde el extremo izquierdo (0%) hasta la marca de valor. */
+@property --arc-progress {
+  syntax: '<number>';
+  initial-value: 0;
+  inherits: false;
+}
 .gauge__arc {
   fill: none;
   stroke: var(--gauge-col, var(--brand-blue));
   stroke-width: 13;
   stroke-linecap: round;
-  stroke-dasharray: 283;
-  stroke-dashoffset: 283;           /* empieza oculto */
+  stroke-dasharray: var(--arc-progress) 283;
+  stroke-dashoffset: 0;
   filter: drop-shadow(0 0 6px var(--gauge-col, var(--brand-blue)));
-  transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
+  transition: --arc-progress 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
 }
-.gauge.active .gauge__arc { stroke-dashoffset: var(--arc-offset, 0); }
+.gauge.active .gauge__arc { --arc-progress: var(--arc-fill, 0); }
 
 /* Tick marks */
 .gauge__tick { stroke: var(--text-3); stroke-width: 2; stroke-linecap: round; }
@@ -2951,54 +2956,32 @@ ul { list-style: none; }
   .coverage-inner { grid-template-columns: 1fr; gap: 40px; }
 }
 
-/* Coverage bar chart */
-.coverage-chart {
-  background: var(--bg-2);
-  border: 1px solid var(--border);
+/* Satellite map */
+.coverage-map-wrap {
   border-radius: 16px;
-  padding: 28px 28px 24px;
-}
-.coverage-chart__title {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-3);
-  margin: 0 0 20px;
-}
-.coverage-bars { display: flex; flex-direction: column; gap: 14px; }
-.cbar { display: grid; grid-template-columns: 1fr auto; gap: 4px 10px; align-items: center; }
-.cbar__label {
-  font-size: 0.82rem;
-  color: var(--text);
-  grid-column: 1;
-  grid-row: 1;
-  white-space: nowrap;
-}
-.cbar__track {
-  grid-column: 1;
-  grid-row: 2;
-  height: 8px;
-  background: var(--bg-3);
-  border-radius: 4px;
   overflow: hidden;
+  border: 1px solid rgba(14,165,233,0.25);
+  box-shadow: 0 0 40px rgba(14,165,233,0.12);
 }
-.cbar__fill {
-  height: 100%;
-  width: var(--w, 0%);
-  background: linear-gradient(90deg, var(--brand-teal), var(--brand-blue));
-  border-radius: 4px;
-  transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+#sat-map {
+  width: 100%;
+  height: 420px;
 }
-/* Animate bars on scroll reveal */
-.coverage-chart:not(.visible) .cbar__fill { width: 0 !important; }
-.cbar__pct {
-  grid-column: 2;
-  grid-row: 1 / 3;
-  font-size: 0.72rem;
-  font-family: var(--font-mono);
-  color: var(--text-3);
-  align-self: center;
+/* Leaflet dark-mode overrides */
+.leaflet-container {
+  background: #0d1117;
+  font-family: var(--font-sans);
+}
+.leaflet-popup-content-wrapper {
+  background: var(--bg-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+.leaflet-popup-tip { background: var(--bg-2); }
+@media (max-width: 900px) {
+  #sat-map { height: 280px; }
 }
 .coverage-info { max-width: 520px; }
 .coverage-lead {
