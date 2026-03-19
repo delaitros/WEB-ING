@@ -857,19 +857,23 @@
         <!-- Gauge: Izaje -->
         <div class="gauge reveal" style="--gauge-fill:0.92;--needle-rot:75.6deg;--gauge-col:var(--brand-blue)">
           <div class="gauge__inner">
-            <svg class="gauge__svg" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path class="gauge__track" d="M 20,115 A 80,80 0 0,0 180,115"/>
-              <path class="gauge__arc" d="M 20,115 A 80,80 0 0,0 180,115" pathLength="1"/>
-              <line class="gauge__tick" x1="25" y1="115" x2="15" y2="115"/>
-              <line class="gauge__tick" x1="46.9" y1="61.9" x2="40.1" y2="55.1"/>
-              <line class="gauge__tick" x1="100" y1="40" x2="100" y2="30"/>
-              <line class="gauge__tick" x1="153.1" y1="61.9" x2="159.9" y2="55.1"/>
-              <line class="gauge__tick" x1="175" y1="115" x2="185" y2="115"/>
-              <line class="gauge__needle" x1="100" y1="115" x2="100" y2="48"/>
-              <circle class="gauge__hub" cx="100" cy="115" r="7"/>
-              <text class="gauge__val" x="100" y="94" text-anchor="middle">92%</text>
-              <text class="gauge__status" x="100" y="109" text-anchor="middle">APTO</text>
-            </svg>
+            <div class="gauge__face">
+              <svg class="gauge__arcs" viewBox="0 0 200 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path class="gauge__track" d="M 10,105 A 90,90 0 0,0 190,105"/>
+                <path class="gauge__arc"   d="M 10,105 A 90,90 0 0,0 190,105" pathLength="1"/>
+                <line class="gauge__tick" x1="18" y1="105" x2="2"   y2="105"/>
+                <line class="gauge__tick" x1="38" y1="43"  x2="30"  y2="35"/>
+                <line class="gauge__tick" x1="100" y1="18" x2="100" y2="7"/>
+                <line class="gauge__tick" x1="162" y1="43" x2="170" y2="35"/>
+                <line class="gauge__tick" x1="182" y1="105" x2="198" y2="105"/>
+              </svg>
+              <div class="gauge__needle-wrap"><div class="gauge__needle-line"></div></div>
+              <div class="gauge__hub-dot"></div>
+              <div class="gauge__readout">
+                <span class="gauge__val">92%</span>
+                <span class="gauge__lbl">APTO</span>
+              </div>
+            </div>
             <p class="gauge__title">Capacidad Operativa</p>
             <span class="gauge__svc">Sistemas de Izaje</span>
           </div>
@@ -878,19 +882,23 @@
         <!-- Gauge: Presión -->
         <div class="gauge reveal" style="--gauge-fill:0.78;--needle-rot:50.4deg;--gauge-col:var(--brand-orange)">
           <div class="gauge__inner">
-            <svg class="gauge__svg" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path class="gauge__track" d="M 20,115 A 80,80 0 0,0 180,115"/>
-              <path class="gauge__arc" d="M 20,115 A 80,80 0 0,0 180,115" pathLength="1"/>
-              <line class="gauge__tick" x1="25" y1="115" x2="15" y2="115"/>
-              <line class="gauge__tick" x1="46.9" y1="61.9" x2="40.1" y2="55.1"/>
-              <line class="gauge__tick" x1="100" y1="40" x2="100" y2="30"/>
-              <line class="gauge__tick" x1="153.1" y1="61.9" x2="159.9" y2="55.1"/>
-              <line class="gauge__tick" x1="175" y1="115" x2="185" y2="115"/>
-              <line class="gauge__needle" x1="100" y1="115" x2="100" y2="48"/>
-              <circle class="gauge__hub" cx="100" cy="115" r="7"/>
-              <text class="gauge__val" x="100" y="94" text-anchor="middle">78%</text>
-              <text class="gauge__status" x="100" y="109" text-anchor="middle">EN LÍMITE</text>
-            </svg>
+            <div class="gauge__face">
+              <svg class="gauge__arcs" viewBox="0 0 200 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path class="gauge__track" d="M 10,105 A 90,90 0 0,0 190,105"/>
+                <path class="gauge__arc"   d="M 10,105 A 90,90 0 0,0 190,105" pathLength="1"/>
+                <line class="gauge__tick" x1="18" y1="105" x2="2"   y2="105"/>
+                <line class="gauge__tick" x1="38" y1="43"  x2="30"  y2="35"/>
+                <line class="gauge__tick" x1="100" y1="18" x2="100" y2="7"/>
+                <line class="gauge__tick" x1="162" y1="43" x2="170" y2="35"/>
+                <line class="gauge__tick" x1="182" y1="105" x2="198" y2="105"/>
+              </svg>
+              <div class="gauge__needle-wrap"><div class="gauge__needle-line"></div></div>
+              <div class="gauge__hub-dot"></div>
+              <div class="gauge__readout">
+                <span class="gauge__val">78%</span>
+                <span class="gauge__lbl">EN LÍMITE</span>
+              </div>
+            </div>
             <p class="gauge__title">Presión de Trabajo</p>
             <span class="gauge__svc">Aparatos a Presión</span>
           </div>
@@ -899,19 +907,23 @@
         <!-- Gauge: Higiene -->
         <div class="gauge reveal" style="--gauge-fill:0.96;--needle-rot:82.8deg;--gauge-col:var(--brand-teal)">
           <div class="gauge__inner">
-            <svg class="gauge__svg" viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path class="gauge__track" d="M 20,115 A 80,80 0 0,0 180,115"/>
-              <path class="gauge__arc" d="M 20,115 A 80,80 0 0,0 180,115" pathLength="1"/>
-              <line class="gauge__tick" x1="25" y1="115" x2="15" y2="115"/>
-              <line class="gauge__tick" x1="46.9" y1="61.9" x2="40.1" y2="55.1"/>
-              <line class="gauge__tick" x1="100" y1="40" x2="100" y2="30"/>
-              <line class="gauge__tick" x1="153.1" y1="61.9" x2="159.9" y2="55.1"/>
-              <line class="gauge__tick" x1="175" y1="115" x2="185" y2="115"/>
-              <line class="gauge__needle" x1="100" y1="115" x2="100" y2="48"/>
-              <circle class="gauge__hub" cx="100" cy="115" r="7"/>
-              <text class="gauge__val" x="100" y="94" text-anchor="middle">96%</text>
-              <text class="gauge__status" x="100" y="109" text-anchor="middle">CERTIFICADO</text>
-            </svg>
+            <div class="gauge__face">
+              <svg class="gauge__arcs" viewBox="0 0 200 115" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path class="gauge__track" d="M 10,105 A 90,90 0 0,0 190,105"/>
+                <path class="gauge__arc"   d="M 10,105 A 90,90 0 0,0 190,105" pathLength="1"/>
+                <line class="gauge__tick" x1="18" y1="105" x2="2"   y2="105"/>
+                <line class="gauge__tick" x1="38" y1="43"  x2="30"  y2="35"/>
+                <line class="gauge__tick" x1="100" y1="18" x2="100" y2="7"/>
+                <line class="gauge__tick" x1="162" y1="43" x2="170" y2="35"/>
+                <line class="gauge__tick" x1="182" y1="105" x2="198" y2="105"/>
+              </svg>
+              <div class="gauge__needle-wrap"><div class="gauge__needle-line"></div></div>
+              <div class="gauge__hub-dot"></div>
+              <div class="gauge__readout">
+                <span class="gauge__val">96%</span>
+                <span class="gauge__lbl">CERTIFICADO</span>
+              </div>
+            </div>
             <p class="gauge__title">Nivel de Cumplimiento</p>
             <span class="gauge__svc">Higiene Laboral</span>
           </div>

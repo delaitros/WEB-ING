@@ -2769,6 +2769,22 @@ ul { list-style: none; }
 .bp-active .bp-label,
 .bp-active .bp-dim      { opacity: 1; }
 
+/* Erasing state: override all delays and durations to erase quickly */
+.bp-erasing .bp-draw,
+.bp-erasing .bp-annot,
+.bp-erasing .bp-divider {
+  stroke-dashoffset: 1 !important;
+  transition-delay: 0s !important;
+  transition-duration: 0.45s !important;
+  transition-timing-function: ease-in !important;
+}
+.bp-erasing .bp-label,
+.bp-erasing .bp-dim {
+  opacity: 0 !important;
+  transition-delay: 0s !important;
+  transition-duration: 0.2s !important;
+}
+
 [data-theme="light"] .bp-draw    { stroke: rgba(26,86,219,0.7); }
 [data-theme="light"] .bp-orange  { stroke: rgba(234,88,12,0.8); }
 [data-theme="light"] .bp-teal    { stroke: rgba(8,145,178,0.8); }
@@ -2778,7 +2794,7 @@ ul { list-style: none; }
 [data-theme="light"] .bp-dim     { fill: rgba(26,86,219,0.45); }
 
 /* ============================================================
-   GAUGES — Indicadores tipo manómetro
+   GAUGES — Indicadores tipo manómetro (div-needle approach)
    ============================================================ */
 .gauges-section {
   padding: 80px 0;
@@ -2791,81 +2807,127 @@ ul { list-style: none; }
   margin-top: 48px;
 }
 @media (max-width: 767px) {
-  .gauges-grid { grid-template-columns: 1fr; max-width: 280px; margin-left: auto; margin-right: auto; }
+  .gauges-grid { grid-template-columns: 1fr; max-width: 300px; margin-left: auto; margin-right: auto; }
 }
 .gauge {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 32px 24px 24px;
+  padding: 28px 20px 20px;
   text-align: center;
-  transition: border-color var(--t), transform var(--spring);
+  transition: border-color var(--t), transform var(--spring), box-shadow var(--t);
 }
-.gauge:hover { transform: translateY(-4px); border-color: var(--gauge-col, var(--brand-blue)); }
-.gauge__inner { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.gauge__svg { width: 100%; max-width: 200px; }
+.gauge:hover {
+  transform: translateY(-5px);
+  border-color: var(--gauge-col, var(--brand-blue));
+  box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 0 0 1px var(--gauge-col, var(--brand-blue));
+}
+.gauge__inner { display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; }
+
+/* Face container: SVG + positioned overlays */
+.gauge__face {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+}
+.gauge__arcs { display: block; width: 100%; height: auto; }
+
+/* Arc track (gray background) */
 .gauge__track {
   fill: none;
-  stroke: var(--border-h);
-  stroke-width: 10;
+  stroke: var(--bg-3);
+  stroke-width: 11;
   stroke-linecap: round;
 }
+[data-theme="light"] .gauge__track { stroke: #d4ddf5; }
+
+/* Arc value (colored, animated via dashoffset) */
 .gauge__arc {
   fill: none;
   stroke: var(--gauge-col, var(--brand-blue));
-  stroke-width: 10;
+  stroke-width: 11;
   stroke-linecap: round;
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  filter: drop-shadow(0 0 6px var(--gauge-col, var(--brand-blue)));
-  transition: stroke-dashoffset 1.5s ease-out 0.2s;
+  filter: drop-shadow(0 0 5px var(--gauge-col, var(--brand-blue)));
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
 }
-.gauge.active .gauge__arc {
-  stroke-dashoffset: calc(1 - var(--gauge-fill, 0.8));
+.gauge.active .gauge__arc { stroke-dashoffset: calc(1 - var(--gauge-fill, 0.8)); }
+
+/* Tick marks */
+.gauge__tick { stroke: var(--text-3); stroke-width: 2; stroke-linecap: round; }
+
+/* ---- Needle (div, rotates reliably via CSS transform) ----
+   Pivot = SVG point (100, 105) in viewBox(0 0 200 115)
+   → left: 50%,  bottom: (115-105)/115 * 100% = 8.7%            */
+.gauge__needle-wrap {
+  position: absolute;
+  bottom: 8.7%;
+  left: 50%;
+  transform: translateX(-50%) rotate(-90deg);
+  transform-origin: 50% 100%;   /* rotate around bottom edge = hub */
+  width: 3px;
+  height: 76%;
+  transition: transform 1.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s;
 }
-.gauge__tick {
-  stroke: var(--text-3);
-  stroke-width: 1.5;
-  stroke-linecap: round;
+.gauge.active .gauge__needle-wrap {
+  transform: translateX(-50%) rotate(var(--needle-rot, 0deg));
 }
-/* Needle: lives at (100,115), rotate around that point */
-.gauge__needle {
-  stroke: var(--text);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  transform-box: view-box;
-  transform-origin: 100px 115px;
-  transform: rotate(-90deg);
-  transition: transform 1.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s;
+.gauge__needle-line {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 0%, var(--text) 28%, var(--text) 100%);
+  border-radius: 2px 2px 0 0;
 }
-.gauge.active .gauge__needle {
-  transform: rotate(var(--needle-rot, 0deg));
+
+/* Hub dot at pivot */
+.gauge__hub-dot {
+  position: absolute;
+  bottom: 8.7%;
+  left: 50%;
+  transform: translateX(-50%) translateY(50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gauge-col, var(--brand-blue));
+  border: 3px solid var(--bg-card);
+  box-shadow: 0 0 10px var(--gauge-col, var(--brand-blue));
 }
-.gauge__hub {
-  fill: var(--gauge-col, var(--brand-blue));
-  stroke: var(--bg-card);
-  stroke-width: 2;
+
+/* Readout: value + label, floated inside face */
+.gauge__readout {
+  position: absolute;
+  bottom: 26%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  pointer-events: none;
+  white-space: nowrap;
 }
 .gauge__val {
   font-family: var(--font-mono);
-  font-size: 22px;
-  font-weight: 600;
-  fill: var(--gauge-col, var(--brand-blue));
+  font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+  font-weight: 700;
+  color: var(--gauge-col, var(--brand-blue));
+  line-height: 1;
 }
-.gauge__status {
+.gauge__lbl {
   font-family: var(--font-mono);
-  font-size: 8.5px;
-  letter-spacing: 0.1em;
-  fill: var(--text-2);
+  font-size: 0.58rem;
+  letter-spacing: 0.13em;
+  color: var(--text-2);
 }
 .gauge__title {
-  font-size: 0.85rem;
+  font-size: 0.88rem;
   font-weight: 600;
   color: var(--text);
   margin: 0;
 }
 .gauge__svc {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--text-3);
   font-family: var(--font-mono);
 }

@@ -240,14 +240,41 @@ document.querySelectorAll('img').forEach(img => {
   update();
 })();
 
-/* ---- Blueprint: activar dibujo al hacer scroll ---- */
+/* ---- Blueprint: loop continuo dibuja → pausa → borra → repite ---- */
 (function () {
   const stage = document.getElementById('bpStage');
   if (!stage) return;
-  const obs = new IntersectionObserver(([e]) => {
-    if (!e.isIntersecting) return;
+
+  const DRAW_END  = 4600;  // ms hasta que termina el último trazo
+  const HOLD      = 2800;  // ms de pausa con todo dibujado
+  const ERASE_DUR = 500;   // ms de borrado rápido
+  const PAUSE     = 400;   // ms de silencio antes del próximo ciclo
+
+  function cycle() {
+    // 1. Dibujar
+    stage.classList.remove('bp-erasing');
+    void stage.offsetWidth;          // forzar reflow para reiniciar transiciones
     stage.classList.add('bp-active');
-    obs.disconnect();
+
+    // 2. Después de terminar de dibujar + pausa, borrar
+    setTimeout(function () {
+      stage.classList.add('bp-erasing');
+      stage.classList.remove('bp-active');
+
+      // 3. Después de borrar, esperar y reiniciar
+      setTimeout(function () {
+        stage.classList.remove('bp-erasing');
+        setTimeout(cycle, PAUSE);
+      }, ERASE_DUR);
+    }, DRAW_END + HOLD);
+  }
+
+  // Arrancar cuando entra en el viewport (solo la primera vez)
+  var started = false;
+  var obs = new IntersectionObserver(function (entries) {
+    if (!entries[0].isIntersecting || started) return;
+    started = true;
+    cycle();
   }, { threshold: 0.15 });
   obs.observe(stage);
 })();
