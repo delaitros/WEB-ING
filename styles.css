@@ -1492,6 +1492,59 @@ ul { list-style: none; }
 /* ============================================================
    WHATSAPP FLOATING BTN
    ============================================================ */
+/* ===== SCROLL PROGRESS BAR ===== */
+#scrollProgressBar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(to right, var(--brand-blue), var(--brand-teal));
+  z-index: 9999;
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+
+/* ===== TIMELINE FILL & ACTIVE ===== */
+.timeline__fill {
+  position: absolute;
+  left: 7px; top: 8px;
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(to bottom, var(--brand-blue), var(--brand-teal));
+  border-radius: 2px;
+  z-index: 1;
+  transition: height 0.15s ease-out;
+}
+.timeline__item.is-active .timeline__dot {
+  background: var(--brand-teal);
+  box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--brand-teal), 0 0 18px rgba(14,165,233,0.5);
+  transform: scale(1.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline__item.is-active .timeline__year {
+  color: var(--brand-blue);
+}
+.timeline__item.is-active .timeline__title {
+  color: var(--brand-teal);
+}
+.timeline__dot {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* ===== TYPING CURSOR ===== */
+.typing-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  background: var(--text);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: blink 0.75s step-end infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
 .wa-btn {
   position: fixed;
   bottom: 28px; right: 28px;
