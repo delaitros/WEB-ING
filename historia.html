@@ -271,40 +271,7 @@
 
   <script src="script.js"></script>
   <script>
-    /* --- Scroll Progress Bar --- */
-    const progressBar = document.getElementById('scrollProgressBar');
-    function updateProgress() {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
-    }
-
-    /* --- Timeline active on scroll --- */
-    const timelineEl   = document.getElementById('timeline');
-    const fillEl       = document.getElementById('timelineFill');
-    const timelineItems = document.querySelectorAll('.timeline__item');
-
-    function updateTimeline() {
-      if (!timelineEl || !fillEl) return;
-      const rect     = timelineEl.getBoundingClientRect();
-      const lineTop  = rect.top + window.scrollY + 8;
-      const lineH    = timelineEl.offsetHeight - 16;
-      const scrollMid = window.scrollY + window.innerHeight * 0.55;
-      const progress = Math.min(1, Math.max(0, (scrollMid - lineTop) / lineH));
-      fillEl.style.height = (progress * 100) + '%';
-
-      timelineItems.forEach(item => {
-        const dotRect = item.querySelector('.timeline__dot').getBoundingClientRect();
-        const dotY    = dotRect.top + window.scrollY;
-        if (dotY <= scrollMid) {
-          item.classList.add('is-active');
-        } else {
-          item.classList.remove('is-active');
-        }
-      });
-    }
-
-    /* --- Typing effect --- */
+    /* --- Typing effect (historia only) --- */
     function typeText(el, text, speed) {
       let i = 0;
       const cursor = document.createElement('span');
@@ -320,21 +287,10 @@
         }
       }, speed);
     }
-
     document.addEventListener('DOMContentLoaded', () => {
       const typingEl = document.getElementById('typingNuestra');
-      if (typingEl) {
-        setTimeout(() => typeText(typingEl, 'Nuestra', 90), 400);
-      }
+      if (typingEl) setTimeout(() => typeText(typingEl, 'Nuestra', 90), 400);
     });
-
-    window.addEventListener('scroll', () => {
-      updateProgress();
-      updateTimeline();
-    }, { passive: true });
-
-    updateProgress();
-    updateTimeline();
   </script>
 </body>
 </html>

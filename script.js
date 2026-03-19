@@ -202,6 +202,44 @@ document.querySelectorAll('img').forEach(img => {
   }
 });
 
+/* ---- Scroll Progress Bar ---- */
+(function () {
+  const bar = document.getElementById('scrollProgressBar');
+  if (!bar) return;
+  function update() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
+/* ---- Timeline active on scroll ---- */
+(function () {
+  const timelineEl    = document.getElementById('timeline');
+  const fillEl        = document.getElementById('timelineFill');
+  const timelineItems = document.querySelectorAll('.timeline__item');
+  if (!timelineEl || !fillEl || !timelineItems.length) return;
+
+  function update() {
+    const rect     = timelineEl.getBoundingClientRect();
+    const lineTop  = rect.top + window.scrollY + 8;
+    const lineH    = timelineEl.offsetHeight - 16;
+    const scrollMid = window.scrollY + window.innerHeight * 0.55;
+    const progress = Math.min(1, Math.max(0, (scrollMid - lineTop) / lineH));
+    fillEl.style.height = (progress * 100) + '%';
+
+    timelineItems.forEach(item => {
+      const dotY = item.querySelector('.timeline__dot').getBoundingClientRect().top + window.scrollY;
+      item.classList.toggle('is-active', dotY <= scrollMid);
+    });
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
+
 /* ---- Bento cards: touch/click toggle for devices without hover ---- */
 document.addEventListener('DOMContentLoaded', () => {
   const isTouchOnly = () => window.matchMedia('(hover: none)').matches;
