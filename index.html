@@ -1163,6 +1163,7 @@
 
   <script src="script.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
   <script>
   (function () {
     var mapEl = document.getElementById('sat-map');
@@ -1176,9 +1177,43 @@
     });
     L.tileLayer(
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      { attribution: 'Tiles &copy; Esri &mdash; Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community' }
+      { attribution: 'Tiles &copy; Esri' }
     ).addTo(map);
 
+    /* Heatmap points: [lat, lng, intensity]
+       Base principal (Trelew) has highest intensity, others scaled by presence */
+    var heatPoints = [
+      /* Trelew / Rawson — base principal, máxima intensidad */
+      [-43.2508, -65.3124, 1.0],
+      [-43.2508, -65.3124, 1.0],
+      [-43.2508, -65.3124, 0.9],
+      /* Puerto Madryn — frecuente */
+      [-42.7692, -65.0385, 0.75],
+      [-42.7692, -65.0385, 0.7],
+      /* Comodoro Rivadavia — regular */
+      [-45.8653, -67.4949, 0.6],
+      [-45.8653, -67.4949, 0.55],
+      /* Caleta Olivia — regular */
+      [-46.4416, -67.5236, 0.55],
+      [-46.4416, -67.5236, 0.5],
+      /* Neuquén — periódico */
+      [-38.9516, -68.0591, 0.4],
+      [-38.9516, -68.0591, 0.35],
+      /* Viedma — periódico */
+      [-40.8135, -62.9968, 0.35],
+      /* Río Gallegos — periódico */
+      [-51.6230, -69.2168, 0.3]
+    ];
+
+    L.heatLayer(heatPoints, {
+      radius:    55,
+      blur:      40,
+      maxZoom:   10,
+      max:       1.0,
+      gradient:  { 0.0: '#0c4a6e', 0.3: '#0369a1', 0.55: '#0ea5e9', 0.75: '#38bdf8', 1.0: '#e0f2fe' }
+    }).addTo(map);
+
+    /* Circle markers on top of heatmap for city labels */
     var cities = [
       { name: 'Trelew / Rawson<br><small>Base Principal</small>', lat: -43.2508, lng: -65.3124, main: true },
       { name: 'Puerto Madryn',         lat: -42.7692, lng: -65.0385 },
@@ -1191,11 +1226,11 @@
 
     cities.forEach(function (c) {
       var marker = L.circleMarker([c.lat, c.lng], {
-        radius:      c.main ? 11 : 8,
-        fillColor:   c.main ? '#0ea5e9' : '#38bdf8',
-        color:       '#fff',
+        radius:      c.main ? 9 : 6,
+        fillColor:   '#fff',
+        color:       c.main ? '#0ea5e9' : '#38bdf8',
         weight:      2,
-        fillOpacity: 0.92
+        fillOpacity: 0.9
       }).addTo(map);
       marker.bindPopup('<strong style="color:#0ea5e9">' + c.name + '</strong>');
     });
