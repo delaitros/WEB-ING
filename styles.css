@@ -3044,3 +3044,421 @@ ul { list-style: none; }
   stroke: var(--brand-teal);
   flex-shrink: 0;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   GV CHAT WIDGET — iOS iMessage + macOS tab
+═══════════════════════════════════════════════════════════════ */
+
+.gv-chat {
+  position: fixed;
+  bottom: 28px;
+  left: 28px;
+  z-index: 9000;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* ── macOS dock tab (minimized) ── */
+.gv-chat__tab {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(22, 22, 26, 0.86);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 100px;
+  padding: 9px 16px 9px 10px;
+  cursor: pointer;
+  transition: transform 0.38s cubic-bezier(0.34,1.56,0.64,1),
+              opacity 0.28s ease,
+              box-shadow 0.2s ease;
+  box-shadow:
+    0 4px 28px rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.07) inset;
+}
+.gv-chat__tab:hover {
+  transform: scale(1.06) translateY(-3px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.1) inset;
+}
+.gv-chat__tab:active { transform: scale(0.97); }
+.gv-chat__tab.gv-hidden {
+  transform: scale(0.6) translateY(12px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gv-chat__tab-av {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a56db 0%, #0ea5e9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(26,86,219,0.5);
+}
+
+.gv-chat__tab-label {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+}
+
+.gv-chat__tab-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34c759;
+  flex-shrink: 0;
+  margin-left: 2px;
+  animation: gvDotPulse 2.4s ease infinite;
+}
+@keyframes gvDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.45; transform: scale(0.8); }
+}
+
+/* ── iOS window ── */
+.gv-chat__win {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 340px;
+  height: 618px;
+  border-radius: 46px;
+  background: #ffffff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.08),
+    0 32px 100px rgba(0,0,0,0.7),
+    0 0 0 0.5px rgba(255,255,255,0.15) inset;
+  transform-origin: bottom left;
+  transition: transform 0.44s cubic-bezier(0.34,1.56,0.64,1),
+              opacity 0.3s ease;
+}
+.gv-chat__win.gv-hidden {
+  transform: scale(0.04) translate(-40px, 50px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ── Fake iOS status bar ── */
+.gv-chat__sb {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 14px 22px 2px;
+  flex-shrink: 0;
+  position: relative;
+}
+.gv-chat__sb-time {
+  font-size: 15px;
+  font-weight: 600;
+  color: #000000;
+  letter-spacing: -0.3px;
+  flex: 1;
+}
+.gv-chat__sb-notch {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 122px;
+  height: 30px;
+  background: #000;
+  border-radius: 0 0 22px 22px;
+}
+.gv-chat__sb-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #000;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+/* ── Chat header ── */
+.gv-chat__hdr {
+  background: rgba(248,248,248,0.97);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 0.5px solid rgba(0,0,0,0.1);
+  padding: 8px 14px 11px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.gv-chat__min-btn {
+  background: none;
+  border: none;
+  color: #007aff;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.gv-chat__min-btn:hover { background: rgba(0,122,255,0.1); }
+
+.gv-chat__contact {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  justify-content: center;
+}
+.gv-chat__av {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a56db 0%, #0ea5e9 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(26,86,219,0.45);
+}
+.gv-chat__name {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #000;
+  letter-spacing: -0.3px;
+}
+.gv-chat__online {
+  font-size: 11px;
+  color: #34c759;
+  font-weight: 400;
+  letter-spacing: -0.1px;
+}
+.gv-chat__hdr-sp { width: 34px; flex-shrink: 0; }
+
+/* ── Messages area ── */
+.gv-chat__msgs {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background: #ffffff;
+  scroll-behavior: smooth;
+}
+.gv-chat__msgs::-webkit-scrollbar { width: 3px; }
+.gv-chat__msgs::-webkit-scrollbar-track { background: transparent; }
+.gv-chat__msgs::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 3px; }
+
+/* Date separator */
+.gv-msg-date {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: #8e8e93;
+  margin: 6px 0 8px;
+  letter-spacing: 0.15px;
+  text-transform: capitalize;
+}
+
+/* Message wrapper */
+.gv-msg {
+  display: flex;
+  flex-direction: column;
+  max-width: 78%;
+  animation: gvMsgPop 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes gvMsgPop {
+  from { opacity: 0; transform: scale(0.75) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.gv-msg.inc { align-self: flex-start; align-items: flex-start; }
+.gv-msg.out { align-self: flex-end;   align-items: flex-end;   }
+
+/* Bubble */
+.gv-bubble {
+  padding: 9px 14px;
+  border-radius: 20px;
+  font-size: 14.5px;
+  line-height: 1.42;
+  max-width: 100%;
+  word-wrap: break-word;
+}
+.gv-msg.inc .gv-bubble {
+  background: #e9e9eb;
+  color: #000;
+  border-bottom-left-radius: 6px;
+}
+.gv-msg.out .gv-bubble {
+  background: #007aff;
+  color: #fff;
+  border-bottom-right-radius: 6px;
+}
+/* Consecutive same sender – flatten top corner */
+.gv-msg.inc + .gv-msg.inc .gv-bubble { border-top-left-radius: 8px; }
+.gv-msg.out + .gv-msg.out .gv-bubble { border-top-right-radius: 8px; }
+
+.gv-msg-time {
+  font-size: 10px;
+  color: #8e8e93;
+  margin-top: 2px;
+  padding: 0 4px;
+}
+
+/* Typing indicator */
+.gv-typing {
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 11px 15px;
+  background: #e9e9eb;
+  border-radius: 20px;
+  border-bottom-left-radius: 6px;
+  animation: gvMsgPop 0.25s ease both;
+  margin-bottom: 2px;
+}
+.gv-tdot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8e8e93;
+}
+.gv-tdot:nth-child(1) { animation: gvTyping 1.2s 0s   infinite; }
+.gv-tdot:nth-child(2) { animation: gvTyping 1.2s 0.2s infinite; }
+.gv-tdot:nth-child(3) { animation: gvTyping 1.2s 0.4s infinite; }
+@keyframes gvTyping {
+  0%, 60%, 100% { transform: translateY(0);   opacity: 0.4; }
+  30%           { transform: translateY(-5px); opacity: 1;   }
+}
+
+/* Quick reply buttons */
+.gv-qr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 4px 10px 2px;
+  align-self: flex-start;
+  animation: gvMsgPop 0.3s ease both;
+}
+.gv-qr-btn {
+  background: none;
+  border: 1.5px solid #007aff;
+  color: #007aff;
+  border-radius: 100px;
+  padding: 7px 15px;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+  white-space: nowrap;
+  letter-spacing: -0.1px;
+}
+.gv-qr-btn:hover  { background: rgba(0,122,255,0.09); }
+.gv-qr-btn:active { background: #007aff; color: #fff; transform: scale(0.95); }
+
+/* WhatsApp CTA button inside chat */
+.gv-wa-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: #25d366;
+  color: #fff;
+  padding: 11px 19px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  margin: 5px 10px;
+  transition: background 0.15s, transform 0.12s;
+  animation: gvMsgPop 0.3s ease both;
+  line-height: 1;
+}
+.gv-wa-cta:hover  { background: #1dbe5a; }
+.gv-wa-cta:active { transform: scale(0.96); }
+.gv-wa-cta svg    { flex-shrink: 0; }
+
+/* Input bar */
+.gv-chat__bar {
+  background: rgba(248,248,248,0.97);
+  backdrop-filter: blur(20px);
+  border-top: 0.5px solid rgba(0,0,0,0.1);
+  padding: 8px 12px 18px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.gv-chat__bar.gv-hidden { display: none; }
+
+.gv-chat__inputwrap {
+  flex: 1;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.13);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  padding: 8px 8px 8px 15px;
+  gap: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.gv-chat__input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  color: #000;
+  caret-color: #007aff;
+}
+.gv-chat__input::placeholder { color: #c7c7cc; }
+
+.gv-chat__send {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #007aff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1),
+              opacity 0.18s ease,
+              background 0.15s;
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
+}
+.gv-chat__send.gv-visible {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+.gv-chat__send:hover  { background: #0071e3; transform: scale(1.1); }
+.gv-chat__send:active { transform: scale(0.93); }
+
+/* Mobile */
+@media (max-width: 420px) {
+  .gv-chat { bottom: 16px; left: 12px; }
+  .gv-chat__win {
+    width: calc(100vw - 24px);
+    height: 82svh;
+    border-radius: 38px;
+  }
+}

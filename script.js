@@ -305,3 +305,290 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+/* ═══════════════════════════════════════════════════════════════
+   GV CHAT WIDGET — iOS iMessage + macOS tab
+═══════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  /* ── config ── */
+  const WA_GV = '5492804581369';
+  const WA_SVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
+
+  const ENGINEERS = [
+    {
+      id:      'vidal',
+      name:    'Ing. Félix Vidal',
+      short:   'Ing. Vidal',
+      role:    'Higiene Laboral',
+      wa:      WA_GV,
+      waText:  'Hola Ing. Vidal, me comunico desde la web de GV Ingenieros.',
+    },
+    {
+      id:      'galarza',
+      name:    'Ing. Aldo Galarza',
+      short:   'Ing. Galarza',
+      role:    'Izaje & Presión',
+      wa:      WA_GV,
+      waText:  'Hola Ing. Galarza, me comunico desde la web de GV Ingenieros.',
+    },
+  ];
+
+  /* ── state ── */
+  const s = { step: null, nombre: '', ubicacion: '', servicios: [] };
+  let chatStarted = false;
+
+  /* ── DOM ── */
+  const $  = id => document.getElementById(id);
+  const tab    = $('gvChatTab');
+  const win    = $('gvChatWin');
+  const msgs   = $('gvChatMsgs');
+  const input  = $('gvChatInput');
+  const send   = $('gvChatSend');
+  const minBtn = $('gvChatMin');
+  const clock  = $('gvChatClock');
+
+  /* ── clock ── */
+  function tickClock() {
+    const t = new Date();
+    clock.textContent = t.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false });
+  }
+  tickClock();
+  setInterval(tickClock, 30000);
+
+  /* ── ui helpers ── */
+  const now = () => new Date().toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false });
+
+  function scroll() {
+    requestAnimationFrame(() => { msgs.scrollTop = msgs.scrollHeight; });
+  }
+
+  function addMsg(html, dir) {
+    const el = document.createElement('div');
+    el.className = 'gv-msg ' + (dir || 'inc');
+    el.innerHTML = '<div class="gv-bubble">' + html + '</div><span class="gv-msg-time">' + now() + '</span>';
+    msgs.appendChild(el);
+    scroll();
+    return el;
+  }
+
+  function typing(ms) {
+    return new Promise(function (res) {
+      const el = document.createElement('div');
+      el.className = 'gv-typing';
+      el.innerHTML = '<div class="gv-tdot"></div><div class="gv-tdot"></div><div class="gv-tdot"></div>';
+      msgs.appendChild(el);
+      scroll();
+      setTimeout(function () { el.remove(); res(); }, ms || 1000);
+    });
+  }
+
+  function qr(opts, cb) {
+    const wrap = document.createElement('div');
+    wrap.className = 'gv-qr';
+    opts.forEach(function (o) {
+      const label = typeof o === 'string' ? o : o.label;
+      const val   = typeof o === 'string' ? o : o.value;
+      const btn   = document.createElement('button');
+      btn.className = 'gv-qr-btn';
+      btn.textContent = label;
+      btn.addEventListener('click', function () {
+        wrap.remove();
+        addMsg(label, 'out');
+        cb(val, label);
+      });
+      wrap.appendChild(btn);
+    });
+    msgs.appendChild(wrap);
+    scroll();
+    return wrap;
+  }
+
+  function waLink(href, label) {
+    const a = document.createElement('a');
+    a.href = href; a.target = '_blank'; a.rel = 'noopener';
+    a.className = 'gv-wa-cta';
+    a.innerHTML = WA_SVG + label;
+    msgs.appendChild(a);
+    scroll();
+    return a;
+  }
+
+  function showInput(ph) {
+    $('gvChatBar').classList.remove('gv-hidden');
+    input.placeholder = ph || 'Escribe un mensaje…';
+    setTimeout(function () { input.focus(); }, 120);
+  }
+  function hideInput() {
+    $('gvChatBar').classList.add('gv-hidden');
+    input.value = '';
+    send.classList.remove('gv-visible');
+  }
+
+  /* ── minimize / expand ── */
+  function minimize() {
+    win.classList.add('gv-hidden');
+    win.setAttribute('aria-hidden', 'true');
+    tab.classList.remove('gv-hidden');
+  }
+  function expand() {
+    tab.classList.add('gv-hidden');
+    win.classList.remove('gv-hidden');
+    win.setAttribute('aria-hidden', 'false');
+    scroll();
+  }
+
+  minBtn.addEventListener('click', minimize);
+  tab.addEventListener('click', function () {
+    expand();
+    if (!chatStarted) { chatStarted = true; startChat(); }
+  });
+
+  /* ═══ CONVERSATION FLOW ═══ */
+
+  async function startChat() {
+    hideInput();
+    /* date separator */
+    const sep = document.createElement('div');
+    sep.className = 'gv-msg-date';
+    sep.textContent = new Date().toLocaleDateString('es-AR', { weekday: 'long', day: 'numeric', month: 'long' });
+    msgs.appendChild(sep);
+
+    await typing(700);
+    addMsg('¡Hola! 👋 Soy el asistente de <strong>GV Ingenieros</strong>.');
+    await typing(1050);
+    addMsg('¿En qué área te podemos ayudar?');
+    qr(
+      ['Sistemas de Izaje', 'Aparatos a Presión', 'Higiene Laboral', 'Consulta general'],
+      stepService
+    );
+  }
+
+  async function stepService(val) {
+    s.servicios.push(val);
+    await typing(900);
+    addMsg('<strong>' + val + '</strong> es una de nuestras especialidades 💼<br>¿Te interesa algún otro servicio?');
+    qr(
+      ['Sí, ver más', 'No, continuar →'],
+      async function (v) {
+        if (v === 'Sí, ver más') {
+          const rest = ['Sistemas de Izaje', 'Aparatos a Presión', 'Higiene Laboral'].filter(function (x) {
+            return !s.servicios.includes(x);
+          });
+          if (rest.length) {
+            qr(rest, async function (v2) { s.servicios.push(v2); await stepLocation(); });
+          } else {
+            await stepLocation();
+          }
+        } else {
+          await stepLocation();
+        }
+      }
+    );
+  }
+
+  async function stepLocation() {
+    await typing(800);
+    addMsg('¿De qué ciudad o provincia sos?');
+    s.step = 'location';
+    showInput('Ej: Comodoro Rivadavia…');
+  }
+
+  async function stepName() {
+    await typing(900);
+    addMsg('¡<strong>' + s.ubicacion + '</strong>! Operamos mucho en esa zona 🗺️');
+    await typing(700);
+    addMsg('¿Cuál es tu nombre?');
+    s.step = 'name';
+    showInput('Tu nombre…');
+  }
+
+  async function stepEngineer() {
+    hideInput();
+    await typing(900);
+    addMsg('Mucho gusto, <strong>' + s.nombre + '</strong> 👋');
+    await typing(1100);
+    addMsg('¿Querés hablar directamente con uno de nuestros ingenieros?');
+    qr(
+      ['Sí, quiero un ingeniero', 'No, solo tengo una consulta'],
+      async function (v) {
+        if (v.startsWith('Sí')) {
+          await pickEngineer();
+        } else {
+          await sendConsulta();
+        }
+      }
+    );
+  }
+
+  async function pickEngineer() {
+    await typing(800);
+    addMsg('¿Con qué área necesitás hablar?');
+    qr(
+      ENGINEERS.map(function (e) { return { label: e.short + ' — ' + e.role, value: e.id }; }),
+      async function (id) {
+        const eng = ENGINEERS.find(function (e) { return e.id === id; });
+        await typing(700);
+        addMsg('¡Perfecto! Tocá el botón para hablar con <strong>' + eng.name + '</strong> ahora mismo 👇');
+        const txt = eng.waText + '\n\n👤 *Nombre:* ' + s.nombre +
+                    '\n📍 *Ubicación:* ' + s.ubicacion +
+                    '\n🔧 *Intereses:* ' + s.servicios.join(', ');
+        waLink('https://wa.me/' + eng.wa + '?text=' + encodeURIComponent(txt),
+               'Abrir WhatsApp con ' + eng.short.split(' ').pop());
+        /* also notify GV team */
+        notifyTeam(eng.name);
+        s.step = 'done';
+      }
+    );
+  }
+
+  async function sendConsulta() {
+    await typing(800);
+    addMsg('¡Perfecto! Enviá tu consulta a nuestro equipo 📩');
+    const txt = buildMsg(false);
+    const btn = waLink('https://wa.me/' + WA_GV + '?text=' + encodeURIComponent(txt), 'Enviar consulta por WhatsApp');
+    btn.addEventListener('click', function () {
+      setTimeout(function () {
+        btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polyline points="20 6 9 17 4 12" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg> ¡Enviado!';
+        btn.style.background = '#1a56db';
+        btn.style.pointerEvents = 'none';
+      }, 500);
+    });
+    s.step = 'done';
+  }
+
+  function buildMsg(engName) {
+    return '🏗️ *Nueva consulta — GV Ingenieros Web*\n\n' +
+           '👤 *Nombre:* ' + s.nombre + '\n' +
+           '📍 *Ubicación:* ' + s.ubicacion + '\n' +
+           '🔧 *Servicios de interés:* ' + s.servicios.join(', ') + '\n' +
+           '💬 *Solicitó ingeniero:* ' + (engName ? 'Sí (' + engName + ')' : 'No');
+  }
+
+  function notifyTeam(engName) {
+    /* Fire-and-forget: open WA for the team notification in background */
+    const url = 'https://wa.me/' + WA_GV + '?text=' + encodeURIComponent(buildMsg(engName));
+    const a = document.createElement('a');
+    a.href = url; a.target = '_blank'; a.rel = 'noopener';
+    /* We don't auto-open to avoid pop-up blockers; the engineer WA btn is enough */
+  }
+
+  /* ── input handling ── */
+  input.addEventListener('input', function () {
+    send.classList.toggle('gv-visible', input.value.trim().length > 0);
+  });
+  input.addEventListener('keydown', function (e) { if (e.key === 'Enter') handleSend(); });
+  send.addEventListener('click', handleSend);
+
+  function handleSend() {
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    send.classList.remove('gv-visible');
+    addMsg(text, 'out');
+    if (s.step === 'location') { s.ubicacion = text; stepName(); }
+    else if (s.step === 'name') { s.nombre = text; stepEngineer(); }
+  }
+
+})();

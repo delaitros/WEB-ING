@@ -1161,6 +1161,65 @@
     <span class="wa-btn__tip">¿Necesita una inspección?</span>
   </a>
 
+  <!-- ===== CHAT WIDGET ===== -->
+  <div id="gvChat" class="gv-chat" role="complementary" aria-label="Asistente virtual GV Ingenieros">
+
+    <!-- macOS-style tab (minimized state) -->
+    <button class="gv-chat__tab" id="gvChatTab" aria-label="Abrir asistente virtual">
+      <div class="gv-chat__tab-av">GV</div>
+      <span class="gv-chat__tab-label">Asistente GV</span>
+      <span class="gv-chat__tab-dot" aria-hidden="true"></span>
+    </button>
+
+    <!-- iOS iMessage window -->
+    <div class="gv-chat__win gv-hidden" id="gvChatWin" role="dialog" aria-labelledby="gvChatName" aria-hidden="true">
+
+      <!-- Fake iOS status bar -->
+      <div class="gv-chat__sb" aria-hidden="true">
+        <span class="gv-chat__sb-time" id="gvChatClock">9:41</span>
+        <div class="gv-chat__sb-notch"></div>
+        <div class="gv-chat__sb-icons">
+          <!-- Signal bars -->
+          <svg width="17" height="11" viewBox="0 0 17 11" fill="none"><rect x="0"   y="5"  width="3" height="6" rx="1" fill="currentColor" opacity=".35"/><rect x="4.5" y="3"  width="3" height="8" rx="1" fill="currentColor" opacity=".55"/><rect x="9"   y="1"  width="3" height="10" rx="1" fill="currentColor" opacity=".75"/><rect x="13.5" y="0" width="3" height="11" rx="1" fill="currentColor"/></svg>
+          <!-- WiFi -->
+          <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M8 9.5a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/><path d="M8 6c1.6 0 3 .7 4 1.8l-1.4 1.4A3.5 3.5 0 008 8a3.5 3.5 0 00-2.6 1.2L4 7.8A5 5 0 018 6z" opacity=".75"/><path d="M8 2.5c2.8 0 5.3 1.2 7 3.1L13.6 7a7.5 7.5 0 00-11.2 0L1 5.6A9.5 9.5 0 018 2.5z" opacity=".4"/></svg>
+          <!-- Battery -->
+          <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".5" y=".5" width="21" height="11" rx="3.5" stroke="currentColor" stroke-opacity=".35"/><rect x="2" y="2" width="17" height="8" rx="2" fill="currentColor"/><path d="M23 4.5v3a2 2 0 000-3z" fill="currentColor" opacity=".4"/></svg>
+        </div>
+      </div>
+
+      <!-- Chat header -->
+      <div class="gv-chat__hdr">
+        <button class="gv-chat__min-btn" id="gvChatMin" aria-label="Minimizar chat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="gv-chat__contact">
+          <div class="gv-chat__av">GV</div>
+          <div>
+            <div class="gv-chat__name" id="gvChatName">GV Ingenieros</div>
+            <div class="gv-chat__online">● En línea</div>
+          </div>
+        </div>
+        <div class="gv-chat__hdr-sp"></div>
+      </div>
+
+      <!-- Messages -->
+      <div class="gv-chat__msgs" id="gvChatMsgs" role="log" aria-live="polite" aria-atomic="false"></div>
+
+      <!-- Input bar (hidden initially) -->
+      <div class="gv-chat__bar gv-hidden" id="gvChatBar">
+        <div class="gv-chat__inputwrap">
+          <input id="gvChatInput" class="gv-chat__input" type="text" placeholder="iMessage" autocomplete="off" aria-label="Escribe un mensaje" />
+          <button id="gvChatSend" class="gv-chat__send" aria-label="Enviar mensaje">
+            <svg width="15" height="15" viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z" fill="white"/></svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- /CHAT WIDGET -->
+
   <script src="script.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
