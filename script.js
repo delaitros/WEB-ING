@@ -319,19 +319,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const ENGINEERS = [
     {
       id:      'vidal',
-      name:    'Ing. Félix Vidal',
-      short:   'Ing. Vidal',
+      name:    'Ingeniero Félix Vidal',
+      short:   'Ingeniero Vidal',
       role:    'Higiene Laboral',
       wa:      WA_GV,
-      waText:  'Hola Ing. Vidal, me comunico desde la web de GV Ingenieros.',
+      waText:  'Hola Ingeniero Vidal, me comunico desde la web de GV Ingenieros.',
     },
     {
       id:      'galarza',
-      name:    'Ing. Aldo Galarza',
-      short:   'Ing. Galarza',
+      name:    'Ingeniero Aldo Galarza',
+      short:   'Ingeniero Galarza',
       role:    'Izaje & Presión',
-      wa:      WA_GV,
-      waText:  'Hola Ing. Galarza, me comunico desde la web de GV Ingenieros.',
+      wa:      '5492804692596',
+      waText:  'Hola Ingeniero Galarza, me comunico desde la web de GV Ingenieros.',
     },
   ];
 
@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
     await typing(1050);
     addMsg('¿En qué área te podemos ayudar?');
     qr(
-      ['Sistemas de Izaje', 'Aparatos a Presión', 'Higiene Laboral', 'Consulta general'],
+      ['Sistemas de Izaje', 'Aparatos sometidos a presión', 'Higiene Laboral', 'Consulta general'],
       stepService
     );
   }
@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ['Sí, ver más', 'No, continuar →'],
       async function (v) {
         if (v === 'Sí, ver más') {
-          const rest = ['Sistemas de Izaje', 'Aparatos a Presión', 'Higiene Laboral'].filter(function (x) {
+          const rest = ['Sistemas de Izaje', 'Aparatos sometidos a presión', 'Higiene Laboral'].filter(function (x) {
             return !s.servicios.includes(x);
           });
           if (rest.length) {
